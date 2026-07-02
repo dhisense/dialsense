@@ -20,5 +20,71 @@
     "fetchedAt": "2026-07-02",
     "extractedFrom": "territory[id=CA].fixedLine.nationalNumberPattern",
     "notes": "Added alongside us.json to prove calling code 1 (NANP) can resolve to more than one region: US and Canada share calling code 1 but have disjoint area-code allocations, so parse() tries each region sharing a matched calling code and returns whichever one's pattern actually validates the number. Same localOnly-length-dropped rationale as us.json."
+  },
+  "gb.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=GB].fixedLine.nationalNumberPattern",
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"1212345678\"."
+  },
+  "de.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=DE].fixedLine.nationalNumberPattern",
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"30123456\"."
+  },
+  "fr.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=FR].fixedLine.nationalNumberPattern",
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"123456789\"."
+  },
+  "au.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=AU].fixedLine.nationalNumberPattern",
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"212345678\"."
+  },
+  "in.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=IN].fixedLine.nationalNumberPattern",
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"7410410123\"."
+  },
+  "jp.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=JP].fixedLine.nationalNumberPattern",
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"312345678\"."
   }
 }

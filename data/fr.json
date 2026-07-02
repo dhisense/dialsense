@@ -1,0 +1,10 @@
+{
+  "FR": {
+    "region": "FR",
+    "callingCode": "33",
+    "nationalNumberPattern": "^(?:(?:26[013-9]|59[1-35-9])\\d{6}|(?:[13]\\d|2[0-57-9]|4[1-9]|5[0-8])\\d{7})$",
+    "possibleLengths": [
+      9
+    ]
+  }
+}
