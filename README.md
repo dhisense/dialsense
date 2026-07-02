@@ -40,14 +40,30 @@ Without metadata, `parse` only checks that input is E.164-shaped. Inject
 metadata to get real per-country validation (calling code + national number
 format). Metadata is keyed by ISO region (not calling code - a calling code
 like NANP's `1` can map to several regions, e.g. US and Canada) and matches
-the `Metadata` shape exported from `dialsense/metadata` - see
-[`data/us.json`](data/us.json) and [`data/ca.json`](data/ca.json) in this
-repo for examples (dev fixtures, not currently shipped in the package):
+the `Metadata` shape exported from `dialsense/metadata`.
+
+Country data lives in [`data/`](data) (`us.json`, `ca.json`, `gb.json`,
+`de.json`, `fr.json`, `au.json`, `in.json`, `jp.json` so far - extracted from
+Google's `libphonenumber` via [`scripts/extract-metadata.ts`](scripts/extract-metadata.ts),
+with source commit/version tracked in [`data/sources.json`](data/sources.json))
+and is published with the package, so you only need to import the countries
+you actually use - each is its own file, so bundlers only include what you
+import:
 
 ```ts
 import { parse } from 'dialsense';
 import { setup } from 'dialsense/metadata';
+import us from 'dialsense/metadata/us.json' with { type: 'json' };
 
+setup({ metadata: us });
+
+parse('+12025550123'); // now validated against the US calling code + pattern
+```
+
+You can also hand-write metadata matching the same shape instead of using
+the shipped data:
+
+```ts
 setup({
   metadata: {
     US: {
@@ -58,14 +74,13 @@ setup({
     },
   },
 });
-
-parse('+12025550123'); // now validated against the US calling code + pattern
 ```
 
 ## Package Exports
 
 - `dialsense`
 - `dialsense/metadata`
+- `dialsense/metadata/{region}.json` (e.g. `dialsense/metadata/us.json`) - per-country validation data
 - `dialsense/types`
 
 ## Development Notes

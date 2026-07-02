@@ -21,10 +21,12 @@
       "import": "./dist/types.js",
       "require": "./dist/types.cjs"
     },
+    "./metadata/*.json": "./data/*.json",
     "./package.json": "./package.json"
   },
   "files": [
     "dist",
+    "data",
     "README.md"
   ],
   "sideEffects": false,
