@@ -59,6 +59,45 @@
           12
         ]
       }
-    }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{5})",
+        "format": "$1",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{5})",
+        "format": "$1",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{6})",
+        "format": "$1",
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3,7})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{4,8})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{6,10})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d)(\\d{4,9})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      }
+    ]
   }
 }

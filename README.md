@@ -98,6 +98,29 @@ upstream ships byte-identical patterns for both) - `parse()` reports
 `'UNKNOWN'` now specifically means no type-specific data was available at
 all, not "we didn't bother."
 
+### Display formatting
+
+Where a country's metadata includes format rules (`formats`/`nationalPrefix`
+on `CountryMetadata`), `format()` renders a parsed number for display:
+
+```ts
+import { parse, format } from 'dialsense';
+
+const result = parse('+12025550123');
+if (result.success) {
+  format(result.data, 'NATIONAL');      // '(202) 555-0123'
+  format(result.data, 'INTERNATIONAL'); // '+1 202-555-0123'
+  format(result.data, 'E164');          // '+12025550123'
+}
+```
+
+`NATIONAL` and `INTERNATIONAL` can genuinely differ beyond just the `+`
+prefix - e.g. some countries' international format drops parentheses around
+the area code, or a country's national dialing prefix (e.g. GB's `0`) only
+appears in `NATIONAL` output, never `INTERNATIONAL`. Falls back to the
+unformatted national number (`NATIONAL`) or plain `e164` (`INTERNATIONAL`,
+or no metadata at all) rather than throwing when no format rule matches.
+
 ### Real-time reachability, carrier, and fraud/risk lookups
 
 `parse()` is static and offline - it can validate a number's shape, but it
@@ -148,6 +171,7 @@ is simply `null` - `asyncParse()` itself never throws.
 - `dialsense/metadata/{region}.json` (e.g. `dialsense/metadata/us.json`) - per-country validation data
 - `dialsense/types`
 - `dialsense/reachability` - `IReachabilityProvider` plugin interface for real-time lookups
+- `dialsense/format` - `format()` for NATIONAL/INTERNATIONAL/E.164 display
 
 ## Development Notes
 

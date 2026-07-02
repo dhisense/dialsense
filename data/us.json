@@ -37,6 +37,23 @@
           10
         ]
       }
-    }
+    },
+    "nationalPrefix": "011",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1-$2"
+      },
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1-$2",
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "($1) $2-$3",
+        "intlFormat": "$1-$2-$3"
+      }
+    ]
   }
 }

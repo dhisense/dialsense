@@ -1,6 +1,8 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
-import type { CountryMetadata, TypePattern } from '../src/metadata.js';
+import { format } from '../src/format.js';
+import { setup, type CountryMetadata, type FormatRule, type TypePattern } from '../src/metadata.js';
+import type { PhoneNumber } from '../src/types.js';
 
 // Reusable extraction: pulls a territory's validation pattern out of
 // Google's upstream libphonenumber metadata and writes it into our
@@ -56,8 +58,13 @@ export const fetchLatestCommit = async (): Promise<CommitInfo> => {
 
 const deepEqual = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b);
 
+// Requires a preceding boundary (start-of-string or whitespace) before the
+// attribute name - without it, e.g. searching for "nationalPrefix" would
+// incorrectly match inside "internationalPrefix" (a real bug this caught:
+// GB's nationalPrefix was extracted as "00" from internationalPrefix
+// instead of "0" from the actual nationalPrefix attribute).
 const extractAttr = (tagContent: string, name: string): string | undefined =>
-  tagContent.match(new RegExp(`${name}="([^"]*)"`))?.[1];
+  tagContent.match(new RegExp(`(?:^|\\s)${name}="([^"]*)"`))?.[1];
 
 const extractTerritoryBlock = (xml: string, id: string): string => {
   const match = xml.match(new RegExp(`<territory id="${id}"[\\s\\S]*?</territory>`));
@@ -164,6 +171,43 @@ const extractTypeBlock = (territoryBlock: string, tag: string): TypeBlockExtract
   };
 };
 
+// Deliberately doesn't capture <leadingDigits> - it's a performance
+// pre-filter real libphonenumber uses to avoid testing every pattern per
+// keystroke. We format complete numbers (not per-keystroke) across a
+// modest country count, so testing each rule's full `pattern` in
+// declaration order is both correct (pattern is the authoritative check
+// either way) and simpler to extract.
+const extractFormats = (territoryBlock: string): FormatRule[] => {
+  const availableFormatsBlock = territoryBlock.match(/<availableFormats>([\s\S]*?)<\/availableFormats>/)?.[1];
+  if (!availableFormatsBlock) {
+    return [];
+  }
+
+  const rules: FormatRule[] = [];
+  const numberFormatPattern = /<numberFormat\s+([^>]*)>([\s\S]*?)<\/numberFormat>/g;
+  let match: RegExpExecArray | null;
+  while ((match = numberFormatPattern.exec(availableFormatsBlock))) {
+    const [, attrs, body] = match;
+    const pattern = extractAttr(attrs ?? '', 'pattern');
+    const format = body?.match(/<format>([\s\S]*?)<\/format>/)?.[1]?.trim();
+    if (!pattern || !format) {
+      continue;
+    }
+
+    const nationalPrefixFormattingRule = extractAttr(attrs ?? '', 'nationalPrefixFormattingRule');
+    const intlFormat = body?.match(/<intlFormat>([\s\S]*?)<\/intlFormat>/)?.[1]?.trim();
+
+    rules.push({
+      pattern,
+      format,
+      ...(nationalPrefixFormattingRule ? { nationalPrefixFormattingRule } : {}),
+      ...(intlFormat ? { intlFormat } : {}),
+    });
+  }
+
+  return rules;
+};
+
 const main = async () => {
   const ids = process.argv.slice(2).map((id) => id.toUpperCase());
   if (ids.length === 0) {
@@ -245,13 +289,43 @@ const main = async () => {
       types[typeKey] = { nationalNumberPattern: extracted.pattern, possibleLengths: extracted.possibleLengths };
     }
 
+    const nationalPrefix = extractAttr(territory, 'nationalPrefix');
+    const formats = extractFormats(territory);
+
     const metadata: CountryMetadata = {
       region: id,
       callingCode,
       nationalNumberPattern: pattern,
       possibleLengths,
       ...(Object.keys(types).length > 0 ? { types } : {}),
+      ...(nationalPrefix ? { nationalPrefix } : {}),
+      ...(formats.length > 0 ? { formats } : {}),
     };
+
+    // Self-check: the primary exampleNumber should match at least one
+    // format rule, when there are any - not a full proof of the format
+    // algorithm's correctness (that's what the unit tests are for), just
+    // a guard against a badly broken extraction. Also logs the computed
+    // NATIONAL/INTERNATIONAL string via the real `format()` function (not
+    // a duplicated copy of its logic) for a human to sanity-eyeball.
+    if (formats.length > 0) {
+      const matchesExample = formats.some((rule) => new RegExp(`^(?:${rule.pattern})$`).test(exampleNumber));
+      if (!matchesExample) {
+        throw new Error(`Extraction self-check failed for ${id}: no format rule matches upstream exampleNumber "${exampleNumber}"`);
+      }
+      setup({ metadata: { [id]: metadata } });
+      const exampleAsPhoneNumber: PhoneNumber = {
+        e164: `+${callingCode}${exampleNumber}`,
+        countryCode: Number(callingCode),
+        region: id,
+        nationalNumber: exampleNumber,
+        type: 'UNKNOWN',
+      };
+      console.log(
+        `  ${id} NATIONAL: "${format(exampleAsPhoneNumber, 'NATIONAL')}", INTERNATIONAL: "${format(exampleAsPhoneNumber, 'INTERNATIONAL')}"`,
+      );
+    }
+
     const fileName = `${id.toLowerCase()}.json`;
     const filePath = new URL(fileName, DATA_DIR);
 

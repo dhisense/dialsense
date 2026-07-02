@@ -3,6 +3,24 @@ export interface TypePattern {
   possibleLengths: number[];
 }
 
+export interface FormatRule {
+  // Full-match regex with capture groups, e.g. "(\d{3})(\d{4})".
+  pattern: string;
+  // Template using $1/$2/... for the capture groups, e.g. "$1 $2".
+  format: string;
+  // How the national prefix combines with the first group in NATIONAL
+  // format specifically, e.g. "$NP$FG" ($NP = nationalPrefix, $FG = the
+  // raw first group) - omitted means NATIONAL format has no prefix at all.
+  // Never applies to INTERNATIONAL format.
+  nationalPrefixFormattingRule?: string;
+  // Overrides `format` for INTERNATIONAL style specifically. The literal
+  // value "NA" means this rule should be skipped entirely for
+  // INTERNATIONAL (try the next matching rule) - e.g. local-only formats
+  // that omit the area code aren't valid once you need to dial
+  // internationally. Omitted (not "NA") means reuse `format` as-is.
+  intlFormat?: string;
+}
+
 export interface CountryMetadata {
   // ISO 3166-1 alpha-2, e.g. "US". Kept on the value itself (not just as
   // the object key) because callers group entries by calling code - once
@@ -28,6 +46,12 @@ export interface CountryMetadata {
     UAN?: TypePattern;
     VOICEMAIL?: TypePattern;
   };
+  // e.g. "0" for GB, "1" for NANP. Absent for regions with no national
+  // dialing prefix.
+  nationalPrefix?: string;
+  // In upstream declaration order - first full match against the national
+  // number wins, same resolution order as Google's own algorithm.
+  formats?: FormatRule[];
 }
 
 export interface Metadata {

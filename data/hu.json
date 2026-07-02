@@ -44,6 +44,24 @@
           9
         ]
       }
-    }
+    },
+    "nationalPrefix": "06",
+    "formats": [
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "($NP $FG)"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "($NP $FG)"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP $FG"
+      }
+    ]
   }
 }

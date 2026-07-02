@@ -50,6 +50,44 @@
           9
         ]
       }
-    }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{2,3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d)(\\d{4})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG"
+      }
+    ]
   }
 }

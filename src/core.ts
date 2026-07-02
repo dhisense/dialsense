@@ -2,6 +2,8 @@ import { getMetadata, type CountryMetadata, type TypePattern } from './metadata.
 import { getProvider } from './reachability.js';
 import { ParseErrorCode, type AsyncParseResult, type ParseResult, type PhoneNumber } from './types.js';
 
+export { format, type FormatStyle } from './format.js';
+
 const MIN_DIGIT_LENGTH = 4;
 const MAX_DIGIT_LENGTH = 15; // E.164 maximum
 const MAX_CALLING_CODE_LENGTH = 3;
