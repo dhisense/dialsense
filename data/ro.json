@@ -1,0 +1,11 @@
+{
+  "RO": {
+    "region": "RO",
+    "callingCode": "40",
+    "nationalNumberPattern": "^(?:[23][13-6]\\d{7}|(?:2(?:19\\d|[3-6]\\d9)|31\\d\\d)\\d\\d)$",
+    "possibleLengths": [
+      6,
+      9
+    ]
+  }
+}

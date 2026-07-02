@@ -1,0 +1,10 @@
+{
+  "HU": {
+    "region": "HU",
+    "callingCode": "36",
+    "nationalNumberPattern": "^(?:(?:1\\d|[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6[23689]|8[2-57-9]|9[2-69])\\d{6})$",
+    "possibleLengths": [
+      8
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "MT": {
+    "region": "MT",
+    "callingCode": "356",
+    "nationalNumberPattern": "^(?:20(?:3[1-4]|6[059])\\d{4}|2(?:0[19]|[1-357]\\d|60)\\d{5})$",
+    "possibleLengths": [
+      8
+    ]
+  }
+}

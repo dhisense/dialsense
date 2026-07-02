@@ -1,0 +1,10 @@
+{
+  "LV": {
+    "region": "LV",
+    "callingCode": "371",
+    "nationalNumberPattern": "^(?:6\\d{7})$",
+    "possibleLengths": [
+      8
+    ]
+  }
+}

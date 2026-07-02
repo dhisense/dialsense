@@ -1,0 +1,10 @@
+{
+  "CY": {
+    "region": "CY",
+    "callingCode": "357",
+    "nationalNumberPattern": "^(?:2[2-6]\\d{6})$",
+    "possibleLengths": [
+      8
+    ]
+  }
+}

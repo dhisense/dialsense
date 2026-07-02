@@ -1,0 +1,10 @@
+{
+  "SI": {
+    "region": "SI",
+    "callingCode": "386",
+    "nationalNumberPattern": "^(?:(?:[1-357][2-8]|4[24-8])\\d{6})$",
+    "possibleLengths": [
+      8
+    ]
+  }
+}

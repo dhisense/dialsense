@@ -1,0 +1,10 @@
+{
+  "CZ": {
+    "region": "CZ",
+    "callingCode": "420",
+    "nationalNumberPattern": "^(?:(?:2\\d|3[1257-9]|4[16-9]|5[13-9])\\d{7})$",
+    "possibleLengths": [
+      9
+    ]
+  }
+}
