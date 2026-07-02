@@ -1,0 +1,10 @@
+{
+  "AG": {
+    "region": "AG",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:268(?:4(?:6[0-38]|84)|56[0-2])\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

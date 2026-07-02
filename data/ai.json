@@ -1,0 +1,10 @@
+{
+  "AI": {
+    "region": "AI",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:264(?:292|4(?:6[12]|9[78]))\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

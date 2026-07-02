@@ -1,0 +1,10 @@
+{
+  "DM": {
+    "region": "DM",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:767(?:2(?:55|66)|4(?:2[01]|4[0-25-9])|50[0-4])\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

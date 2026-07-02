@@ -1,0 +1,10 @@
+{
+  "TC": {
+    "region": "TC",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:649(?:266|712|9(?:4\\d|50))\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

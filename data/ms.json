@@ -1,0 +1,10 @@
+{
+  "MS": {
+    "region": "MS",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:6644(?:1[0-3]|91)\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

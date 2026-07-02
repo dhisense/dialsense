@@ -1,0 +1,10 @@
+{
+  "KN": {
+    "region": "KN",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:869(?:2(?:29|36)|302|4(?:6[015-9]|70)|56[5-7])\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

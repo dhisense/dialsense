@@ -1,0 +1,10 @@
+{
+  "SX": {
+    "region": "SX",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:7215(?:4[2-8]|8[39]|9[056])\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

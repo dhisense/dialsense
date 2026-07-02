@@ -1,0 +1,10 @@
+{
+  "LC": {
+    "region": "LC",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:758(?:234|4(?:30|5\\d|6[2-9]|8[0-2])|57[0-2]|(?:63|75)8)\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "PR": {
+    "region": "PR",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:(?:787|939)[2-9]\\d{6})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}

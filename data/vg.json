@@ -1,0 +1,10 @@
+{
+  "VG": {
+    "region": "VG",
+    "callingCode": "1",
+    "nationalNumberPattern": "^(?:284(?:229|4(?:22|9[45])|774|8(?:52|6[459]))\\d{4})$",
+    "possibleLengths": [
+      10
+    ]
+  }
+}
