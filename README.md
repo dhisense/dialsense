@@ -18,7 +18,7 @@ npm install
 
 - `npm run typecheck`: run TypeScript type checks.
 - `npm run build`: build ESM + CJS bundles and declaration files into `dist/`.
-- `npm test`: runs the project validation test command (`typecheck`).
+- `npm test`: runs typecheck, then the unit tests in `tests/`.
 
 ## Usage
 
@@ -32,6 +32,34 @@ if (result.success) {
 }
 
 console.log(isValid('+12025550123'));
+```
+
+### Adding country validation
+
+Without metadata, `parse` only checks that input is E.164-shaped. Inject
+metadata to get real per-country validation (calling code + national number
+format). Metadata is keyed by ISO region (not calling code - a calling code
+like NANP's `1` can map to several regions, e.g. US and Canada) and matches
+the `Metadata` shape exported from `dialsense/metadata` - see
+[`data/us.json`](data/us.json) and [`data/ca.json`](data/ca.json) in this
+repo for examples (dev fixtures, not currently shipped in the package):
+
+```ts
+import { parse } from 'dialsense';
+import { setup } from 'dialsense/metadata';
+
+setup({
+  metadata: {
+    US: {
+      region: 'US',
+      callingCode: '1',
+      nationalNumberPattern: '^[2-9]\\d{9}$',
+      possibleLengths: [10],
+    },
+  },
+});
+
+parse('+12025550123'); // now validated against the US calling code + pattern
 ```
 
 ## Package Exports

@@ -17,6 +17,7 @@
     // Emitting is handled by tsup (see `build` script); tsc is only used
     // for `--noEmit` typechecking, so keep it from writing into src/.
     "noEmit": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

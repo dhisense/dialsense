@@ -8,6 +8,9 @@ export enum ParseErrorCode {
 export interface PhoneNumber {
   e164: string;
   countryCode: number;
+  // ISO 3166-1 alpha-2, e.g. "US". `null` when no injected metadata
+  // resolved a specific region for this number (format-only validation).
+  region: string | null;
   nationalNumber: string;
   type: 'MOBILE' | 'FIXED' | 'VOIP' | 'UNKNOWN';
 }

@@ -1,0 +1,24 @@
+{
+  "us.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=US].fixedLine.nationalNumberPattern",
+    "notes": "US fixedLine and mobile patterns are byte-identical upstream (NANP doesn't distinguish them by number range), so fixedLine's pattern was used for the general validation pattern. possibleLengths uses only the national length (10); the localOnly length (7, e.g. UAN-style 310-xxxx numbers) was intentionally dropped since DialSense only parses full E.164 numbers, where a local-only length is never valid."
+  },
+  "ca.json": {
+    "sourceRepo": "https://github.com/google/libphonenumber",
+    "sourceFile": "resources/PhoneNumberMetadata.xml",
+    "sourceUrl": "https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml",
+    "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
+    "fetchedCommitDate": "2026-07-02T09:35:17Z",
+    "nearestReleaseTag": "v9.0.34",
+    "fetchedAt": "2026-07-02",
+    "extractedFrom": "territory[id=CA].fixedLine.nationalNumberPattern",
+    "notes": "Added alongside us.json to prove calling code 1 (NANP) can resolve to more than one region: US and Canada share calling code 1 but have disjoint area-code allocations, so parse() tries each region sharing a matched calling code and returns whichever one's pattern actually validates the number. Same localOnly-length-dropped rationale as us.json."
+  }
+}
