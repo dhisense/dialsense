@@ -9,13 +9,14 @@
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    // "node" is needed for `node:test`/`node:assert` in tests/; the
+    // library source itself stays runtime-agnostic.
+    "types": ["node"],
 
     // Other Outputs
+    // Emitting is handled by tsup (see `build` script); tsc is only used
+    // for `--noEmit` typechecking, so keep it from writing into src/.
+    "noEmit": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -40,5 +41,8 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    // tsup's dts bundler always passes a `baseUrl`, which TS 6 hard-errors
+    // on by default; this only silences that, not our own config.
+    "ignoreDeprecations": "6.0",
   }
 }

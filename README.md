@@ -2,6 +2,12 @@
 
 A modular, type-safe, and tree-shakable TypeScript library for phone number validation. Designed for modern web applications, DialSense offers a clean, functional API and metadata-as-a-plugin architecture to minimize bundle size while ensuring reliable telephony data parsing.
 
+## Why Dialsense?
+- Modern API: Pure functions, no class-based "God-objects."
+- Tree-Shakable: Import only the metadata you need.
+- Type-Safe: No more try/catch—handle ParseResult objects explicitly.
+- Telemetry-Ready: Designed to easily integrate with real-time operational lookup services (HLR/CNAM).
+
 ## Install
 
 ```bash
