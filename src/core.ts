@@ -1,5 +1,6 @@
 import { getMetadata, type CountryMetadata } from './metadata.js';
-import { ParseErrorCode, type ParseResult } from './types.js';
+import { getProvider } from './reachability.js';
+import { ParseErrorCode, type AsyncParseResult, type ParseResult } from './types.js';
 
 const MIN_DIGIT_LENGTH = 4;
 const MAX_DIGIT_LENGTH = 15; // E.164 maximum
@@ -149,4 +150,29 @@ export const parse = (input: string, defaultCountry?: string): ParseResult => {
 
 export const isValid = (input: string, country?: string): boolean => {
   return parse(input, country).success;
+};
+
+// Validates first, then optionally enriches with a live lookup - never
+// spends a network call on a number that's already known to be invalid.
+// Never throws: a provider error is indistinguishable from no provider
+// being configured at all (both surface as `reachability: null`), which
+// keeps this consistent with the rest of the library's no-try/catch
+// contract.
+export const asyncParse = async (input: string, defaultCountry?: string): Promise<AsyncParseResult> => {
+  const result = parse(input, defaultCountry);
+  if (!result.success) {
+    return result;
+  }
+
+  const provider = getProvider();
+  if (!provider) {
+    return { ...result, reachability: null };
+  }
+
+  try {
+    const reachability = await provider.lookup(result.data);
+    return { ...result, reachability };
+  } catch {
+    return { ...result, reachability: null };
+  }
 };

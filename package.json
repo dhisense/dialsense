@@ -21,6 +21,11 @@
       "import": "./dist/types.js",
       "require": "./dist/types.cjs"
     },
+    "./reachability": {
+      "types": "./dist/reachability.d.ts",
+      "import": "./dist/reachability.js",
+      "require": "./dist/reachability.cjs"
+    },
     "./metadata/*.json": "./data/*.json",
     "./package.json": "./package.json"
   },
@@ -35,7 +40,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsup src/core.ts src/metadata.ts src/types.ts --format esm,cjs --dts --sourcemap --clean --out-dir dist",
+    "build": "tsup src/core.ts src/metadata.ts src/types.ts src/reachability.ts --format esm,cjs --dts --sourcemap --clean --out-dir dist",
     "prepack": "npm run typecheck && npm run build",
     "test": "npm run typecheck && tsx --test $(find tests -type f -name '*.test.ts' | sort)",
     "metadata:extract": "tsx scripts/extract-metadata.ts",

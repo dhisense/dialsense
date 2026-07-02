@@ -1,3 +1,5 @@
+import type { ReachabilityResult } from './reachability.js';
+
 export enum ParseErrorCode {
   INVALID_COUNTRY_CODE = 'INVALID_COUNTRY_CODE',
   TOO_SHORT = 'TOO_SHORT',
@@ -15,6 +17,13 @@ export interface PhoneNumber {
   type: 'MOBILE' | 'FIXED' | 'VOIP' | 'UNKNOWN';
 }
 
-export type ParseResult = 
+export type ParseResult =
   | { success: true; data: PhoneNumber }
+  | { success: false; error: ParseErrorCode; message: string };
+
+// `reachability` is `null` when no provider is configured (see
+// reachability.ts) or when the provider's lookup failed - asyncParse()
+// never throws on a provider error, so this is the only signal.
+export type AsyncParseResult =
+  | { success: true; data: PhoneNumber; reachability: ReachabilityResult | null }
   | { success: false; error: ParseErrorCode; message: string };

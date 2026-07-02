@@ -85,12 +85,56 @@ setup({
 });
 ```
 
+### Real-time reachability, carrier, and fraud/risk lookups
+
+`parse()` is static and offline - it can validate a number's shape, but it
+can't tell you if a number is *currently* reachable, which carrier it's on,
+whether it's been ported, or a fraud/risk score. That's what `asyncParse()`
+is for: it validates first (never spends a network call on a number that's
+already invalid), then optionally enriches the result via an
+`IReachabilityProvider` you plug in yourself - DialSense ships the
+interface, not a lookup implementation:
+
+```ts
+import { asyncParse } from 'dialsense';
+import { configure } from 'dialsense/reachability';
+import type { IReachabilityProvider } from 'dialsense/reachability';
+
+const myProvider: IReachabilityProvider = {
+  async lookup(phoneNumber) {
+    const res = await fetch(`https://your-hlr-vendor.example/v1/lookup/${phoneNumber.e164}`);
+    const data = await res.json();
+    return {
+      reachable: data.reachable,
+      lineType: data.lineType, // a live lookup CAN say 'MOBILE' vs 'FIXED' where parse() can't
+      carrierName: data.carrier,
+      ported: data.ported,
+      roaming: data.roaming,
+      callerName: data.cnam,
+      riskScore: data.riskScore,
+    };
+  },
+};
+
+configure({ provider: myProvider });
+
+const result = await asyncParse('+12025550123');
+if (result.success) {
+  console.log(result.data.type);       // 'UNKNOWN' - parse() alone can't determine this for many countries
+  console.log(result.reachability?.lineType); // 'MOBILE' - but a live lookup can
+}
+```
+
+If no provider is configured (or the provider throws), `result.reachability`
+is simply `null` - `asyncParse()` itself never throws.
+
 ## Package Exports
 
 - `dialsense`
 - `dialsense/metadata`
 - `dialsense/metadata/{region}.json` (e.g. `dialsense/metadata/us.json`) - per-country validation data
 - `dialsense/types`
+- `dialsense/reachability` - `IReachabilityProvider` plugin interface for real-time lookups
 
 ## Development Notes
 
