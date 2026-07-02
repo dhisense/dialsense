@@ -6,9 +6,9 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 // US/CA one at a time, and doubles as groundwork for Phase 3's planned
 // upstream-drift monitoring (same fetch-and-diff logic, different trigger).
 
-const METADATA_XML_URL =
+export const METADATA_XML_URL =
   'https://raw.githubusercontent.com/google/libphonenumber/master/resources/PhoneNumberMetadata.xml';
-const COMMITS_API_URL =
+export const COMMITS_API_URL =
   'https://api.github.com/repos/google/libphonenumber/commits?path=resources/PhoneNumberMetadata.xml&sha=master&per_page=1';
 const TAGS_API_URL = 'https://api.github.com/repos/google/libphonenumber/tags?per_page=1';
 
@@ -21,6 +21,28 @@ interface CountryMetadata {
   nationalNumberPattern: string;
   possibleLengths: number[];
 }
+
+interface CommitInfo {
+  sha: string;
+  date: string;
+}
+
+// Shared with scripts/monitor-upstream.ts, which only needs this cheap
+// call (no XML fetch) to check whether upstream has moved.
+export const fetchLatestCommit = async (): Promise<CommitInfo> => {
+  const commits = (await fetch(COMMITS_API_URL).then((r) => r.json())) as Array<{
+    sha: string;
+    commit: { committer: { date: string } };
+  }>;
+  const sha = commits[0]?.sha;
+  const date = commits[0]?.commit.committer.date;
+  if (!sha || !date) {
+    throw new Error('Could not determine upstream commit SHA');
+  }
+  return { sha, date };
+};
+
+const deepEqual = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b);
 
 const extractAttr = (tagContent: string, name: string): string | undefined =>
   tagContent.match(new RegExp(`${name}="([^"]*)"`))?.[1];
@@ -107,23 +129,17 @@ const main = async () => {
   }
 
   console.log('Fetching upstream metadata...');
-  const [xml, commits, tags] = await Promise.all([
+  const [xml, { sha: fetchedCommit, date: fetchedCommitDate }, tags] = await Promise.all([
     fetch(METADATA_XML_URL).then((r) => {
       if (!r.ok) throw new Error(`Failed to fetch metadata XML: HTTP ${r.status}`);
       return r.text();
     }),
-    fetch(COMMITS_API_URL).then((r) => r.json()) as Promise<Array<{ sha: string; commit: { committer: { date: string } } }>>,
+    fetchLatestCommit(),
     fetch(TAGS_API_URL).then((r) => r.json()) as Promise<Array<{ name: string }>>,
   ]);
 
-  const fetchedCommit = commits[0]?.sha;
-  const fetchedCommitDate = commits[0]?.commit.committer.date;
   const nearestReleaseTag = tags[0]?.name;
   const fetchedAt = new Date().toISOString().slice(0, 10);
-
-  if (!fetchedCommit) {
-    throw new Error('Could not determine upstream commit SHA for provenance');
-  }
 
   const sources: Record<string, unknown> = existsSync(SOURCES_PATH)
     ? JSON.parse(readFileSync(SOURCES_PATH, 'utf8'))
@@ -155,7 +171,21 @@ const main = async () => {
 
     const metadata: CountryMetadata = { region: id, callingCode, nationalNumberPattern: pattern, possibleLengths };
     const fileName = `${id.toLowerCase()}.json`;
-    writeFileSync(new URL(fileName, DATA_DIR), JSON.stringify({ [id]: metadata }, null, 2) + '\n');
+    const filePath = new URL(fileName, DATA_DIR);
+
+    // Skip the write entirely if nothing actually changed - this is what
+    // keeps a full re-extraction (e.g. from the daily upstream monitor)
+    // a minimal, high-signal diff instead of bumping timestamps on every
+    // tracked country whenever any one of them changes upstream.
+    if (existsSync(filePath)) {
+      const existing = JSON.parse(readFileSync(filePath, 'utf8'));
+      if (deepEqual(existing[id], metadata)) {
+        console.log(`  ${id} unchanged, skipping`);
+        continue;
+      }
+    }
+
+    writeFileSync(filePath, JSON.stringify({ [id]: metadata }, null, 2) + '\n');
 
     sources[fileName] = {
       sourceRepo: 'https://github.com/google/libphonenumber',
@@ -177,7 +207,13 @@ const main = async () => {
   }
 };
 
-main().catch((err: unknown) => {
-  console.error('Extraction failed:', err instanceof Error ? err.message : err);
-  process.exitCode = 1;
-});
+// Only run the CLI entrypoint when this file is executed directly - not
+// when it's imported elsewhere (e.g. scripts/monitor-upstream.ts imports
+// `fetchLatestCommit` from here and must not also trigger this file's
+// own `main()`).
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((err: unknown) => {
+    console.error('Extraction failed:', err instanceof Error ? err.message : err);
+    process.exitCode = 1;
+  });
+}

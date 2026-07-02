@@ -38,7 +38,8 @@
     "build": "tsup src/core.ts src/metadata.ts src/types.ts --format esm,cjs --dts --sourcemap --clean --out-dir dist",
     "prepack": "npm run typecheck && npm run build",
     "test": "npm run typecheck && tsx --test $(find tests -type f -name '*.test.ts' | sort)",
-    "metadata:extract": "tsx scripts/extract-metadata.ts"
+    "metadata:extract": "tsx scripts/extract-metadata.ts",
+    "metadata:check": "tsx scripts/monitor-upstream.ts"
   },
   "keywords": [],
   "author": "",

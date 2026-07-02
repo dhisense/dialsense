@@ -19,6 +19,8 @@ npm install
 - `npm run typecheck`: run TypeScript type checks.
 - `npm run build`: build ESM + CJS bundles and declaration files into `dist/`.
 - `npm test`: runs typecheck, then the unit tests in `tests/`.
+- `npm run metadata:extract -- <ISO_REGION...>`: (re)extract one or more countries' validation data from upstream `libphonenumber` into `data/`, e.g. `npm run metadata:extract -- US CA`.
+- `npm run metadata:check`: check whether upstream `libphonenumber` metadata has changed since `data/last-checked-commit.txt`.
 
 ## Usage
 
@@ -42,13 +44,20 @@ format). Metadata is keyed by ISO region (not calling code - a calling code
 like NANP's `1` can map to several regions, e.g. US and Canada) and matches
 the `Metadata` shape exported from `dialsense/metadata`.
 
-Country data lives in [`data/`](data) (`us.json`, `ca.json`, `gb.json`,
-`de.json`, `fr.json`, `au.json`, `in.json`, `jp.json` so far - extracted from
-Google's `libphonenumber` via [`scripts/extract-metadata.ts`](scripts/extract-metadata.ts),
-with source commit/version tracked in [`data/sources.json`](data/sources.json))
-and is published with the package, so you only need to import the countries
-you actually use - each is its own file, so bundlers only include what you
-import:
+Country data lives in [`data/`](data) - all 25 NANP territories (US, Canada,
+and the Caribbean/Pacific territories sharing calling code `1`) plus all 27
+EU member states and a handful of other major markets, 56 countries so far.
+Each is extracted from Google's `libphonenumber` via
+[`scripts/extract-metadata.ts`](scripts/extract-metadata.ts), with source
+commit/version tracked per-file in [`data/sources.json`](data/sources.json).
+A daily GitHub Actions workflow ([`metadata-check.yml`](.github/workflows/metadata-check.yml))
+checks for upstream changes and opens a PR with refreshed data when it finds
+one - see [`data/last-checked-commit.txt`](data/last-checked-commit.txt) for
+the watermark it compares against.
+
+Data is published with the package, so you only need to import the
+countries you actually use - each is its own file, so bundlers only include
+what you import:
 
 ```ts
 import { parse } from 'dialsense';

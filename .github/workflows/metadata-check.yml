@@ -1,0 +1,84 @@
+name: Metadata Upstream Check
+
+on:
+  schedule:
+    # Daily, off the top of the hour (GitHub recommends avoiding :00 to
+    # spread load). Upstream (google/libphonenumber) moves rarely, so
+    # scripts/monitor-upstream.ts's cheap commit check keeps near-daily
+    # no-op runs essentially free.
+    - cron: '23 7 * * *'
+  workflow_dispatch: {}
+
+# Don't cancel a run that might be mid-way through pushing a branch/PR -
+# unlike ci.yml, this workflow writes to the repo, so queue instead.
+concurrency:
+  group: metadata-upstream-check
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    name: Check upstream metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for upstream changes
+        id: monitor
+        run: npm run metadata:check
+
+      # Re-extract every currently-tracked country (derived from data/*.json
+      # filenames, not a hardcoded list, so this automatically covers
+      # whatever we've added by the time this runs). extract-metadata.ts's
+      # skip-unchanged logic keeps the resulting diff to just what actually
+      # changed upstream, not all tracked countries.
+      - name: Re-extract all tracked countries
+        if: steps.monitor.outputs.changed == 'true'
+        run: |
+          REGIONS=$(ls data/*.json | grep -v sources.json | xargs -n1 basename -s .json | tr '[:lower:]' '[:upper:]' | tr '\n' ' ')
+          npm run metadata:extract -- $REGIONS
+
+      - name: Advance last-checked commit
+        if: steps.monitor.outputs.changed == 'true'
+        run: echo "${{ steps.monitor.outputs.latest_commit }}" > data/last-checked-commit.txt
+
+      # Fail closed: if re-extraction somehow broke something, stop here
+      # rather than opening a PR with an untested change.
+      - name: Verify updated data still passes tests
+        if: steps.monitor.outputs.changed == 'true'
+        run: npm test
+
+      - name: Open pull request
+        if: steps.monitor.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'Update phone metadata from upstream libphonenumber'
+          title: 'Update phone metadata (upstream commit ${{ steps.monitor.outputs.latest_commit }})'
+          body: |
+            Automated update from `scripts/monitor-upstream.ts`, which detected a change in
+            [google/libphonenumber](https://github.com/google/libphonenumber)'s
+            `resources/PhoneNumberMetadata.xml` (now at commit `${{ steps.monitor.outputs.latest_commit }}`).
+
+            Every currently-tracked country was re-extracted via `scripts/extract-metadata.ts` and
+            self-checked against upstream's own example numbers; only files with an actual content
+            change are included in this diff. `npm test` already passed in this workflow run.
+
+            **Before merging:** this PR uses the default `GITHUB_TOKEN` and does not trigger CI
+            automatically - push an empty commit or re-run `npm test` locally to get a CI signal
+            before merging.
+          branch: metadata-upstream-update
+          delete-branch: true
