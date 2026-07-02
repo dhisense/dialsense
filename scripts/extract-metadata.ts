@@ -1,5 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
+import type { CountryMetadata, TypePattern } from '../src/metadata.js';
+
 // Reusable extraction: pulls a territory's validation pattern out of
 // Google's upstream libphonenumber metadata and writes it into our
 // CountryMetadata JSON shape. Built for scaling past hand-extracting
@@ -15,12 +17,22 @@ const TAGS_API_URL = 'https://api.github.com/repos/google/libphonenumber/tags?pe
 const DATA_DIR = new URL('../data/', import.meta.url);
 const SOURCES_PATH = new URL('../data/sources.json', import.meta.url);
 
-interface CountryMetadata {
-  region: string;
-  callingCode: string;
-  nationalNumberPattern: string;
-  possibleLengths: number[];
-}
+// Maps our type keys to upstream's XML tag names. FIXED reuses the same
+// <fixedLine> block already captured as the general/fallback pattern -
+// it's extracted twice (general fallback + type classification), which
+// is fine, they're the same data used for two purposes.
+const TYPE_TAGS: Record<keyof NonNullable<CountryMetadata['types']>, string> = {
+  MOBILE: 'mobile',
+  FIXED: 'fixedLine',
+  TOLL_FREE: 'tollFree',
+  PREMIUM_RATE: 'premiumRate',
+  SHARED_COST: 'sharedCost',
+  PERSONAL_NUMBER: 'personalNumber',
+  VOIP: 'voip',
+  PAGER: 'pager',
+  UAN: 'uan',
+  VOICEMAIL: 'voicemail',
+};
 
 interface CommitInfo {
   sha: string;
@@ -120,6 +132,38 @@ const extractPattern = (territoryBlock: string): ExtractedPattern => {
   return { pattern, possibleLengths, exampleNumber, source };
 };
 
+interface TypeBlockExtraction {
+  pattern: string;
+  possibleLengths: number[];
+  exampleNumber?: string;
+}
+
+// Like extractPattern, but for one of the optional per-type blocks
+// (mobile, tollFree, etc.) - returns undefined rather than throwing when
+// a territory simply doesn't have that block, since most territories
+// don't have all ten.
+const extractTypeBlock = (territoryBlock: string, tag: string): TypeBlockExtraction | undefined => {
+  const block = territoryBlock.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`))?.[1];
+  if (!block) {
+    return undefined;
+  }
+
+  const rawPattern = block.match(/<nationalNumberPattern>([\s\S]*?)<\/nationalNumberPattern>/)?.[1];
+  const lengthsAttrs = block.match(/<possibleLengths\s+([^/]*)\/>/)?.[1];
+  const national = lengthsAttrs && extractAttr(lengthsAttrs, 'national');
+  if (!rawPattern || !national) {
+    return undefined;
+  }
+
+  const exampleNumber = block.match(/<exampleNumber>([\s\S]*?)<\/exampleNumber>/)?.[1]?.trim();
+
+  return {
+    pattern: `^(?:${rawPattern.replace(/\s+/g, '')})$`,
+    possibleLengths: parseLengths(national),
+    ...(exampleNumber ? { exampleNumber } : {}),
+  };
+};
+
 const main = async () => {
   const ids = process.argv.slice(2).map((id) => id.toUpperCase());
   if (ids.length === 0) {
@@ -169,7 +213,45 @@ const main = async () => {
       );
     }
 
-    const metadata: CountryMetadata = { region: id, callingCode, nationalNumberPattern: pattern, possibleLengths };
+    // Per-type patterns for type classification (mobile, tollFree, etc.) -
+    // each optional, since most territories don't have all ten. Reuses the
+    // same self-check discipline as the primary pattern above, when the
+    // upstream block has its own exampleNumber (most, not all, do).
+    const types: NonNullable<CountryMetadata['types']> = {};
+    for (const [typeKey, tag] of Object.entries(TYPE_TAGS) as Array<
+      [keyof NonNullable<CountryMetadata['types']>, string]
+    >) {
+      const extracted = extractTypeBlock(territory, tag);
+      if (!extracted) {
+        continue;
+      }
+
+      if (extracted.exampleNumber) {
+        const typeRegex = new RegExp(extracted.pattern);
+        if (!typeRegex.test(extracted.exampleNumber)) {
+          throw new Error(
+            `Extraction self-check failed for ${id} ${typeKey}: pattern does not match upstream exampleNumber "${extracted.exampleNumber}"`,
+          );
+        }
+        if (!extracted.possibleLengths.includes(extracted.exampleNumber.length)) {
+          throw new Error(
+            `Extraction self-check failed for ${id} ${typeKey}: exampleNumber "${extracted.exampleNumber}" length not in possibleLengths [${extracted.possibleLengths.join(', ')}]`,
+          );
+        }
+      } else {
+        console.log(`  ${id} ${typeKey}: no exampleNumber upstream, skipping self-check`);
+      }
+
+      types[typeKey] = { nationalNumberPattern: extracted.pattern, possibleLengths: extracted.possibleLengths };
+    }
+
+    const metadata: CountryMetadata = {
+      region: id,
+      callingCode,
+      nationalNumberPattern: pattern,
+      possibleLengths,
+      ...(Object.keys(types).length > 0 ? { types } : {}),
+    };
     const fileName = `${id.toLowerCase()}.json`;
     const filePath = new URL(fileName, DATA_DIR);
 

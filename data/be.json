@@ -5,6 +5,44 @@
     "nationalNumberPattern": "^(?:80[2-8]\\d{5}|(?:1[0-69]|[23][2-8]|4[23]|5\\d|6[013-57-9]|71|8[1-79]|9[2-4])\\d{6})$",
     "possibleLengths": [
       8
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:4[5-9]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:80[2-8]\\d{5}|(?:1[0-69]|[23][2-8]|4[23]|5\\d|6[013-57-9]|71|8[1-79]|9[2-4])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800[1-9]\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:(?:70(?:2[0-57]|3[04-7]|44|6[04-69]|7[0579])|90\\d\\d)\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:7879\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:78(?:0[578]|1[014-8]|2[25]|3[15-8]|48|5[05]|60|7[06-8]|9\\d)\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    }
   }
 }

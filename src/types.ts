@@ -14,7 +14,23 @@ export interface PhoneNumber {
   // resolved a specific region for this number (format-only validation).
   region: string | null;
   nationalNumber: string;
-  type: 'MOBILE' | 'FIXED' | 'VOIP' | 'UNKNOWN';
+  // 'FIXED_LINE_OR_MOBILE' is a distinct, honest value - not a fallback -
+  // for when a region's fixed-line and mobile patterns are identical
+  // upstream (e.g. the US) and there's no way to statically tell them
+  // apart. 'UNKNOWN' means no type-specific data was available at all.
+  type:
+    | 'MOBILE'
+    | 'FIXED'
+    | 'FIXED_LINE_OR_MOBILE'
+    | 'TOLL_FREE'
+    | 'PREMIUM_RATE'
+    | 'SHARED_COST'
+    | 'PERSONAL_NUMBER'
+    | 'VOIP'
+    | 'PAGER'
+    | 'UAN'
+    | 'VOICEMAIL'
+    | 'UNKNOWN';
 }
 
 export type ParseResult =

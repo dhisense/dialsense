@@ -1,11 +1,17 @@
-import { afterEach, test } from 'node:test';
+import { before, afterEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { asyncParse } from '../src/core.js';
+import { setup } from '../src/metadata.js';
 import { configure, type ReachabilityResult } from '../src/reachability.js';
+import us from '../data/us.json' with { type: 'json' };
 
 const VALID_NUMBER = '+12025550123';
 const INVALID_NUMBER = '+123';
+
+before(() => {
+  setup({ metadata: us });
+});
 
 const SAMPLE_RESULT: ReachabilityResult = {
   reachable: true,
@@ -42,10 +48,12 @@ test('asyncParse returns the provider result for a valid number', async () => {
   assert.equal(result.success, true);
   if (result.success) {
     assert.deepEqual(result.reachability, SAMPLE_RESULT);
-    // The static pattern still can't tell mobile from fixed for the US
-    // (see src/core.ts) - this is the actual point of this phase: a live
-    // lookup can say 'MOBILE' even though parse() itself says 'UNKNOWN'.
-    assert.equal(result.data.type, 'UNKNOWN');
+    // Static classification is honest about the US ambiguity (fixed-line
+    // and mobile share the same pattern upstream) rather than guessing -
+    // but a live lookup can resolve it definitively. That contrast is the
+    // actual point of this phase: parse() alone gets you to "one of
+    // these two," a real provider gets you the specific answer.
+    assert.equal(result.data.type, 'FIXED_LINE_OR_MOBILE');
     assert.equal(result.reachability.lineType, 'MOBILE');
   }
 });

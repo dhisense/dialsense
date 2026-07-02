@@ -1,6 +1,6 @@
-import { getMetadata, type CountryMetadata } from './metadata.js';
+import { getMetadata, type CountryMetadata, type TypePattern } from './metadata.js';
 import { getProvider } from './reachability.js';
-import { ParseErrorCode, type AsyncParseResult, type ParseResult } from './types.js';
+import { ParseErrorCode, type AsyncParseResult, type ParseResult, type PhoneNumber } from './types.js';
 
 const MIN_DIGIT_LENGTH = 4;
 const MAX_DIGIT_LENGTH = 15; // E.164 maximum
@@ -30,15 +30,80 @@ const findCallingCodeGroup = (digits: string): CallingCodeGroup | undefined => {
   return undefined;
 };
 
+// Checked in this order, first match wins - these types are specific
+// enough that a real number shouldn't match more than one.
+const TYPE_PRIORITY = [
+  'PREMIUM_RATE',
+  'TOLL_FREE',
+  'SHARED_COST',
+  'VOIP',
+  'PERSONAL_NUMBER',
+  'PAGER',
+  'UAN',
+  'VOICEMAIL',
+] as const satisfies ReadonlyArray<keyof NonNullable<CountryMetadata['types']>>;
+
+const patternMatches = (nationalNumber: string, pattern: TypePattern): boolean =>
+  pattern.possibleLengths.includes(nationalNumber.length) && new RegExp(pattern.nationalNumberPattern).test(nationalNumber);
+
+// MOBILE/FIXED are checked last, and separately from TYPE_PRIORITY, because
+// upstream data sometimes makes them identical (e.g. the US) - in that case
+// this reports 'FIXED_LINE_OR_MOBILE' rather than arbitrarily picking one.
+const classifyType = (nationalNumber: string, region: CountryMetadata): PhoneNumber['type'] | undefined => {
+  const types = region.types;
+  if (!types) {
+    return undefined;
+  }
+
+  for (const key of TYPE_PRIORITY) {
+    const pattern = types[key];
+    if (pattern && patternMatches(nationalNumber, pattern)) {
+      return key;
+    }
+  }
+
+  const isMobile = types.MOBILE && patternMatches(nationalNumber, types.MOBILE);
+  const isFixed = types.FIXED && patternMatches(nationalNumber, types.FIXED);
+  if (isMobile && isFixed) {
+    return 'FIXED_LINE_OR_MOBILE';
+  }
+  if (isMobile) {
+    return 'MOBILE';
+  }
+  if (isFixed) {
+    return 'FIXED';
+  }
+
+  return undefined;
+};
+
+interface ResolvedRegion {
+  region: CountryMetadata;
+  type: PhoneNumber['type'];
+}
+
 // Of the regions sharing a calling code, find the one whose length and
 // pattern actually validate this national number. Real area codes don't
 // collide across regions sharing a calling code, so at most one matches.
-const matchRegion = (nationalNumber: string, regions: CountryMetadata[]): CountryMetadata | undefined => {
-  return regions.find(
-    (region) =>
+// A region counts as a match if ANY of its type-specific patterns match
+// (not just the general one) - this is what correctly accepts numbers
+// like US toll-free, which don't share fixed-line's area-code structure.
+const matchRegion = (nationalNumber: string, regions: CountryMetadata[]): ResolvedRegion | undefined => {
+  for (const region of regions) {
+    const type = classifyType(nationalNumber, region);
+    if (type) {
+      return { region, type };
+    }
+    // No type-specific data (or none matched): fall back to the general
+    // pattern, same as before per-type data existed.
+    if (
       region.possibleLengths.includes(nationalNumber.length) &&
-      new RegExp(region.nationalNumberPattern).test(nationalNumber),
-  );
+      new RegExp(region.nationalNumberPattern).test(nationalNumber)
+    ) {
+      return { region, type: 'UNKNOWN' };
+    }
+  }
+  return undefined;
 };
 
 export const parse = (input: string, defaultCountry?: string): ParseResult => {
@@ -100,10 +165,14 @@ export const parse = (input: string, defaultCountry?: string): ParseResult => {
 
   const nationalNumber = digits.slice(group.callingCode.length);
 
-  // Aggregate across every region sharing this calling code, so a length
-  // that's out of range for *all* of them is still reported as
-  // TOO_SHORT/TOO_LONG rather than a generic "not a number".
-  const allLengths = group.regions.flatMap((region) => region.possibleLengths);
+  // Aggregate across every region sharing this calling code, and every
+  // type-specific pattern within each region, so a length that's out of
+  // range for *all* of them is still reported as TOO_SHORT/TOO_LONG
+  // rather than a generic "not a number".
+  const allLengths = group.regions.flatMap((region) => [
+    ...region.possibleLengths,
+    ...Object.values(region.types ?? {}).flatMap((pattern) => pattern.possibleLengths),
+  ]);
   const minLength = Math.min(...allLengths);
   const maxLength = Math.max(...allLengths);
 
@@ -123,9 +192,9 @@ export const parse = (input: string, defaultCountry?: string): ParseResult => {
     };
   }
 
-  const region = matchRegion(nationalNumber, group.regions);
+  const resolved = matchRegion(nationalNumber, group.regions);
 
-  if (!region) {
+  if (!resolved) {
     return {
       success: false,
       error: ParseErrorCode.NOT_A_NUMBER,
@@ -133,17 +202,14 @@ export const parse = (input: string, defaultCountry?: string): ParseResult => {
     };
   }
 
-  // TODO: infer `type` (MOBILE/FIXED/VOIP) once metadata carries per-type
-  // patterns; not attempted here since a "tiny subset" of US patterns can't
-  // reliably distinguish them (a known libphonenumber limitation for US).
   return {
     success: true,
     data: {
       e164: sanitized,
       countryCode: Number(group.callingCode),
-      region: region.region,
+      region: resolved.region.region,
       nationalNumber,
-      type: 'UNKNOWN',
+      type: resolved.type,
     },
   };
 };

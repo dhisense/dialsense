@@ -7,6 +7,42 @@
       6,
       7,
       8
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:43[07-9]|99[69]\\d)\\d{5}|(?:8[7-9]|98)\\d{7})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2\\d{5,7}|(?:43[1-6]|70[1-9])\\d{4,5}|(?:[36]\\d|4[124-7]|[57][1-9]|8[1-6]|9[1-7])\\d{5,6})$",
+        "possibleLengths": [
+          6,
+          7,
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:(?:00800\\d\\d|800)\\d{5})$",
+        "possibleLengths": [
+          8,
+          12
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:700\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    }
   }
 }

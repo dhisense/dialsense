@@ -1,11 +1,33 @@
+export interface TypePattern {
+  nationalNumberPattern: string;
+  possibleLengths: number[];
+}
+
 export interface CountryMetadata {
   // ISO 3166-1 alpha-2, e.g. "US". Kept on the value itself (not just as
   // the object key) because callers group entries by calling code - once
   // grouped, the original object key is gone.
   region: string;
   callingCode: string;
+  // General/fallback pattern - used directly when a type-specific match
+  // isn't available (e.g. a region without per-type data yet).
   nationalNumberPattern: string;
   possibleLengths: number[];
+  // Per-type patterns, each optional since not every region's upstream
+  // data distinguishes all of these (e.g. many small territories have no
+  // separate pager/uan/voicemail block at all).
+  types?: {
+    MOBILE?: TypePattern;
+    FIXED?: TypePattern;
+    TOLL_FREE?: TypePattern;
+    PREMIUM_RATE?: TypePattern;
+    SHARED_COST?: TypePattern;
+    PERSONAL_NUMBER?: TypePattern;
+    VOIP?: TypePattern;
+    PAGER?: TypePattern;
+    UAN?: TypePattern;
+    VOICEMAIL?: TypePattern;
+  };
 }
 
 export interface Metadata {

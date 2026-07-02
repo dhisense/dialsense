@@ -85,6 +85,19 @@ setup({
 });
 ```
 
+### Number type detection
+
+Where a country's metadata includes per-type patterns (`types` on
+`CountryMetadata` - `MOBILE`, `FIXED`, `TOLL_FREE`, `PREMIUM_RATE`,
+`SHARED_COST`, `PERSONAL_NUMBER`, `VOIP`, `PAGER`, `UAN`, `VOICEMAIL`),
+`parse()` resolves `PhoneNumber.type` against them instead of always
+returning `'UNKNOWN'`. Some countries genuinely can't distinguish fixed-line
+from mobile in their public numbering data (the US is the clearest example -
+upstream ships byte-identical patterns for both) - `parse()` reports
+`'FIXED_LINE_OR_MOBILE'` in that case rather than guessing one or the other.
+`'UNKNOWN'` now specifically means no type-specific data was available at
+all, not "we didn't bother."
+
 ### Real-time reachability, carrier, and fraud/risk lookups
 
 `parse()` is static and offline - it can validate a number's shape, but it
@@ -120,8 +133,8 @@ configure({ provider: myProvider });
 
 const result = await asyncParse('+12025550123');
 if (result.success) {
-  console.log(result.data.type);       // 'UNKNOWN' - parse() alone can't determine this for many countries
-  console.log(result.reachability?.lineType); // 'MOBILE' - but a live lookup can
+  console.log(result.data.type);       // 'FIXED_LINE_OR_MOBILE' - honest ambiguity, US data can't resolve this statically
+  console.log(result.reachability?.lineType); // 'MOBILE' - a live lookup can resolve it
 }
 ```
 

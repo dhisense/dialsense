@@ -7,6 +7,58 @@
       6,
       7,
       9
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:909[1-9]\\d{5}|9(?:0[1-8]|1[0-24-9]|4[03-57-9]|5\\d)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2(?:16|[2-9]\\d{3})|(?:(?:[3-5][1-8]\\d|819)\\d|601[1-5])\\d)\\d{4}|(?:2|[3-5][1-8])1[67]\\d{3}|[3-5][1-8]16\\d\\d)$",
+        "possibleLengths": [
+          6,
+          7,
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:9(?:00|[78]\\d)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:8[5-9]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:6(?:02|5[0-4]|9[0-6])\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PAGER": {
+        "nationalNumberPattern": "^(?:9090\\d{3})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:96\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    }
   }
 }

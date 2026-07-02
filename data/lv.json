@@ -5,6 +5,38 @@
     "nationalNumberPattern": "^(?:6\\d{7})$",
     "possibleLengths": [
       8
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:2333[0-8]\\d{3}|2(?:[0-24-9]\\d\\d|3(?:0[07]|[14-9]\\d|2[02-9]|3[0-24-9]))\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:6\\d{7})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:81\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    }
   }
 }

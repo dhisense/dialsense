@@ -5,6 +5,45 @@
     "nationalNumberPattern": "^(?:(?:1\\d|[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6[23689]|8[2-57-9]|9[2-69])\\d{6})$",
     "possibleLengths": [
       8
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:[257]0|3[01])\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:1\\d|[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6[23689]|8[2-57-9]|9[2-69])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:(?:[48]0\\d|680[29])\\d{5})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:9[01]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:21\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:38\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    }
   }
 }

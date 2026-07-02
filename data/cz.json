@@ -5,6 +5,65 @@
     "nationalNumberPattern": "^(?:(?:2\\d|3[1257-9]|4[16-9]|5[13-9])\\d{7})$",
     "possibleLengths": [
       9
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:7060\\d{5}|(?:60[1-8]|7(?:0[2-5]|19|[2379]\\d))\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2\\d|3[1257-9]|4[16-9]|5[13-9])\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:9(?:0[05689]|76)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:8[134]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:70[01]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:9[17]0\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:9(?:5\\d|7[2-4])\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOICEMAIL": {
+        "nationalNumberPattern": "^(?:9(?:3\\d{9}|6\\d{7,10}))$",
+        "possibleLengths": [
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    }
   }
 }

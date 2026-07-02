@@ -5,6 +5,50 @@
     "nationalNumberPattern": "^(?:2[2-6]\\d{6})$",
     "possibleLengths": [
       8
-    ]
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:9(?:10|[4-79]\\d)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2[2-6]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90[09]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:80[1-9]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:700\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:(?:50|77)\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    }
   }
 }
