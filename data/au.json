@@ -63,50 +63,81 @@
       {
         "pattern": "(\\d{2})(\\d{3,4})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "16"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{2})(\\d{2})",
         "format": "$1 $2 $3",
+        "leadingDigits": [
+          "13"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d{3})(\\d{3})",
         "format": "$1 $2",
+        "leadingDigits": [
+          "19"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d{3})(\\d{4})",
         "format": "$1 $2",
+        "leadingDigits": [
+          "180",
+          "1802"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d{4})(\\d{3,4})",
         "format": "$1 $2",
+        "leadingDigits": [
+          "19"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{2,4})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "16"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{3})(\\d{3})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "14|4"
+        ]
       },
       {
         "pattern": "(\\d)(\\d{4})(\\d{4})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "($NP$FG)"
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "[2378]"
+        ]
       },
       {
         "pattern": "(\\d{4})(\\d{3})(\\d{3})",
-        "format": "$1 $2 $3"
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "1(?:30|[89])"
+        ]
       },
       {
         "pattern": "(\\d{4})(\\d{4})(\\d{4})",
         "format": "$1 $2 $3",
+        "leadingDigits": [
+          "130"
+        ],
         "intlFormat": "NA"
       }
     ]

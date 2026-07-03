@@ -78,72 +78,108 @@
         "pattern": "(\\d{2})(\\d{2,3})(\\d{2})",
         "format": "$1-$2 $3",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "20"
+        ],
         "intlFormat": "$1 $2 $3"
       },
       {
         "pattern": "(\\d{3})(\\d{4})",
         "format": "$1-$2",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "9(?:00|39|44|9)"
+        ],
         "intlFormat": "$1 $2"
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{2})",
         "format": "$1-$2 $3",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[12][136]|3[356]|4[0246]|6[03]|90[1-9]"
+        ],
         "intlFormat": "$1 $2 $3"
       },
       {
         "pattern": "(\\d)(\\d{2,3})(\\d{2})(\\d{2})",
         "format": "$1-$2 $3 $4",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8"
+        ],
         "intlFormat": "$1 $2 $3 $4"
       },
       {
         "pattern": "(\\d{3})(\\d{2,3})(\\d{2})",
         "format": "$1-$2 $3",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "1[2457]|2(?:[247-9]|5[0138])|3[0247-9]|4[1357-9]|5[0-35-9]|6(?:[125689]|4[02-57]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"
+        ],
         "intlFormat": "$1 $2 $3"
       },
       {
         "pattern": "(\\d{3})(\\d{2,3})(\\d{3})",
         "format": "$1-$2 $3",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "9(?:00|39|44)"
+        ],
         "intlFormat": "$1 $2 $3"
       },
       {
         "pattern": "(\\d{2})(\\d{2,3})(\\d{2})(\\d{2})",
         "format": "$1-$2 $3 $4",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "1[13689]|2[0136]|3[1356]|4[0246]|54|6[03]|90[1-9]"
+        ],
         "intlFormat": "$1 $2 $3 $4"
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{2})(\\d{2})",
         "format": "$1-$2 $3 $4",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "10|7"
+        ],
         "intlFormat": "$1 $2 $3 $4"
       },
       {
         "pattern": "(\\d)(\\d{3})(\\d{3})(\\d{2})",
         "format": "$1-$2 $3 $4",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8"
+        ],
         "intlFormat": "$1 $2 $3 $4"
       },
       {
         "pattern": "(\\d{3})(\\d{2})(\\d{2})(\\d{2})",
         "format": "$1-$2 $3 $4",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[13-5]|2(?:[247-9]|5[0138])|6(?:[124-689]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"
+        ],
         "intlFormat": "$1 $2 $3 $4"
       },
       {
         "pattern": "(\\d{3})(\\d{2})(\\d{2})(\\d{3})",
         "format": "$1-$2 $3 $4",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "9"
+        ],
         "intlFormat": "$1 $2 $3 $4"
       },
       {
         "pattern": "(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})",
         "format": "$1-$2 $3 $4 $5",
         "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[26]"
+        ],
         "intlFormat": "$1 $2 $3 $4 $5"
       }
     ]

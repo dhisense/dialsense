@@ -94,47 +94,75 @@
       {
         "pattern": "(\\d{4})",
         "format": "$1",
+        "leadingDigits": [
+          "14"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d)(\\d{3,12})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "1(?:11|[2-9])"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{2})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "517"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{3,5})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "5[079]"
+        ]
       },
       {
         "pattern": "(\\d{6})",
         "format": "$1",
+        "leadingDigits": [
+          "[18]"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d{3})(\\d{3,10})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "(?:31|4)6|51|6(?:48|5[0-3579]|[6-9])|7(?:20|32|8)|[89]",
+          "(?:31|4)6|51|6(?:485|5[0-3579]|[6-9])|7(?:20|32|8)|[89]"
+        ]
       },
       {
         "pattern": "(\\d{4})(\\d{3,9})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2-467]|5[2-6]"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "5"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{4})(\\d{4,7})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "5"
+        ]
       }
     ]
   }

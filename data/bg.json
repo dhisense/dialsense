@@ -49,47 +49,74 @@
       {
         "pattern": "(\\d{6})",
         "format": "$1",
+        "leadingDigits": [
+          "1"
+        ],
         "intlFormat": "NA"
       },
       {
         "pattern": "(\\d)(\\d)(\\d{2})(\\d{2})",
         "format": "$1 $2 $3 $4",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "2"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{4})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "43[1-6]|70[1-9]"
+        ]
       },
       {
         "pattern": "(\\d)(\\d{3})(\\d{3,4})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "2"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{2,3})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[356]|4[124-7]|7[1-9]|8[1-6]|9[1-7]"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{2})(\\d{3})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "(?:70|8)0"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{3})(\\d{2})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "43[1-7]|7"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[48]|9[08]"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{3})(\\d{3})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "9"
+        ]
       }
     ]
   }

@@ -121,6 +121,26 @@ appears in `NATIONAL` output, never `INTERNATIONAL`. Falls back to the
 unformatted national number (`NATIONAL`) or plain `e164` (`INTERNATIONAL`,
 or no metadata at all) rather than throwing when no format rule matches.
 
+### Live formatting as digits are typed
+
+`asYouType()` is a pure function, not a stateful class - unlike other
+libraries' `new AsYouType('US').input(digit)` pattern, you call it fresh
+with the input's *current full value* each time (like a controlled input
+in React), not incrementally with hidden state to manage:
+
+```ts
+import { asYouType } from 'dialsense';
+
+asYouType('202', 'US');        // '(202'
+asYouType('2025550', 'US');    // '(202) 555-0'
+asYouType('2025550123', 'US'); // '(202) 555-0123'
+```
+
+Because it recomputes from scratch on every call, deletion needs no special
+handling - calling it with a shorter string (the user hit backspace) just
+works, there's no `reset()`. Falls back to the plain typed digits if no
+format rule matches yet or the region has no format data at all.
+
 ### Real-time reachability, carrier, and fraud/risk lookups
 
 `parse()` is static and offline - it can validate a number's shape, but it
@@ -172,6 +192,7 @@ is simply `null` - `asyncParse()` itself never throws.
 - `dialsense/types`
 - `dialsense/reachability` - `IReachabilityProvider` plugin interface for real-time lookups
 - `dialsense/format` - `format()` for NATIONAL/INTERNATIONAL/E.164 display
+- `dialsense/asYouType` - `asYouType()` for live formatting as digits are typed
 
 ## Development Notes
 

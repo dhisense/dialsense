@@ -3,6 +3,7 @@ import { getProvider } from './reachability.js';
 import { ParseErrorCode, type AsyncParseResult, type ParseResult, type PhoneNumber } from './types.js';
 
 export { format, type FormatStyle } from './format.js';
+export { asYouType } from './asYouType.js';
 
 const MIN_DIGIT_LENGTH = 4;
 const MAX_DIGIT_LENGTH = 15; // E.164 maximum

@@ -6,7 +6,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=US].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"2015550123\"."
   },
@@ -17,9 +17,9 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=CA].fixedLine.nationalNumberPattern",
-    "notes": "Added alongside us.json to prove calling code 1 (NANP) can resolve to more than one region: US and Canada share calling code 1 but have disjoint area-code allocations, so parse() tries each region sharing a matched calling code and returns whichever one's pattern actually validates the number. Same localOnly-length-dropped rationale as us.json."
+    "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"5062345678\"."
   },
   "gb.json": {
     "sourceRepo": "https://github.com/google/libphonenumber",
@@ -28,7 +28,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=GB].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"1212345678\"."
   },
@@ -39,7 +39,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=DE].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"30123456\"."
   },
@@ -50,7 +50,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=FR].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"123456789\"."
   },
@@ -61,7 +61,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=AU].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"212345678\"."
   },
@@ -72,7 +72,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=IN].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"7410410123\"."
   },
@@ -83,7 +83,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=JP].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"312345678\"."
   },
@@ -347,7 +347,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=AT].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"1234567890\"."
   },
@@ -358,7 +358,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=BE].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"12345678\"."
   },
@@ -369,7 +369,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=BG].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"2123456\"."
   },
@@ -380,7 +380,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=HR].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"12345678\"."
   },
@@ -391,7 +391,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=CY].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"22345678\"."
   },
@@ -402,7 +402,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=CZ].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"212345678\"."
   },
@@ -413,7 +413,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=DK].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"32123456\"."
   },
@@ -424,7 +424,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=EE].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"3212345\"."
   },
@@ -435,7 +435,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=FI].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"131234567\"."
   },
@@ -446,7 +446,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=GR].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"2123456789\"."
   },
@@ -457,7 +457,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=HU].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"12345678\"."
   },
@@ -468,7 +468,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=IE].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"2212345\"."
   },
@@ -479,7 +479,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=IT].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"0212345678\"."
   },
@@ -490,7 +490,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=LV].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"63123456\"."
   },
@@ -501,7 +501,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=LT].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"31234567\"."
   },
@@ -512,7 +512,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=LU].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"27123456\"."
   },
@@ -523,7 +523,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=MT].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"21001234\"."
   },
@@ -534,7 +534,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=NL].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"101234567\"."
   },
@@ -545,7 +545,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=PL].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"123456789\"."
   },
@@ -556,7 +556,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=PT].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"212345678\"."
   },
@@ -567,7 +567,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=RO].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"211234567\"."
   },
@@ -578,7 +578,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=SK].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"221234567\"."
   },
@@ -589,7 +589,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=SI].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"12345678\"."
   },
@@ -600,7 +600,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=ES].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"810123456\"."
   },
@@ -611,7 +611,7 @@
     "fetchedCommit": "6e46509b686dbe31046db048a073ee67cffed6a3",
     "fetchedCommitDate": "2026-07-02T09:35:17Z",
     "nearestReleaseTag": "v9.0.34",
-    "fetchedAt": "2026-07-02",
+    "fetchedAt": "2026-07-03",
     "extractedFrom": "territory[id=SE].fixedLine.nationalNumberPattern",
     "notes": "Extracted via scripts/extract-metadata.ts; self-checked against upstream exampleNumber \"8123456\"."
   }

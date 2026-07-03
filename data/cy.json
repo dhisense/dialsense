@@ -53,7 +53,10 @@
     "formats": [
       {
         "pattern": "(\\d{2})(\\d{6})",
-        "format": "$1 $2"
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[257-9]"
+        ]
       }
     ]
   }

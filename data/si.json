@@ -48,22 +48,34 @@
       {
         "pattern": "(\\d{2})(\\d{3,6})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8[09]|9"
+        ]
       },
       {
         "pattern": "(\\d{3})(\\d{5})",
         "format": "$1 $2",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "59|8"
+        ]
       },
       {
         "pattern": "(\\d{2})(\\d{3})(\\d{3})",
         "format": "$1 $2 $3",
-        "nationalPrefixFormattingRule": "$NP$FG"
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[37][01]|4[013]|51|6"
+        ]
       },
       {
         "pattern": "(\\d)(\\d{3})(\\d{2})(\\d{2})",
         "format": "$1 $2 $3 $4",
-        "nationalPrefixFormattingRule": "($NP$FG)"
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "[1-57]"
+        ]
       }
     ]
   }

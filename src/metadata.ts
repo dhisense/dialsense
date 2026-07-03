@@ -19,6 +19,12 @@ export interface FormatRule {
   // that omit the area code aren't valid once you need to dial
   // internationally. Omitted (not "NA") means reuse `format` as-is.
   intlFormat?: string;
+  // Upstream declaration order, least to most specific - each is a
+  // stricter refinement of the one before it, not an independent
+  // alternative. Only used by asYouType() to pick a candidate rule before
+  // enough digits exist for `pattern` to fully match; `format()` doesn't
+  // need this since it only ever formats complete numbers.
+  leadingDigits?: string[];
 }
 
 export interface CountryMetadata {

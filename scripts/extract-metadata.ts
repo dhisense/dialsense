@@ -171,12 +171,11 @@ const extractTypeBlock = (territoryBlock: string, tag: string): TypeBlockExtract
   };
 };
 
-// Deliberately doesn't capture <leadingDigits> - it's a performance
-// pre-filter real libphonenumber uses to avoid testing every pattern per
-// keystroke. We format complete numbers (not per-keystroke) across a
-// modest country count, so testing each rule's full `pattern` in
-// declaration order is both correct (pattern is the authoritative check
-// either way) and simpler to extract.
+// <leadingDigits> entries (0 or more per rule, least to most specific) are
+// captured for asYouType(), which needs them to pick a candidate rule
+// before enough digits exist for `pattern` to fully match. format() itself
+// doesn't need them - it only ever formats complete numbers, where
+// `pattern` is already authoritative.
 const extractFormats = (territoryBlock: string): FormatRule[] => {
   const availableFormatsBlock = territoryBlock.match(/<availableFormats>([\s\S]*?)<\/availableFormats>/)?.[1];
   if (!availableFormatsBlock) {
@@ -196,11 +195,15 @@ const extractFormats = (territoryBlock: string): FormatRule[] => {
 
     const nationalPrefixFormattingRule = extractAttr(attrs ?? '', 'nationalPrefixFormattingRule');
     const intlFormat = body?.match(/<intlFormat>([\s\S]*?)<\/intlFormat>/)?.[1]?.trim();
+    const leadingDigits = [...(body?.matchAll(/<leadingDigits>([\s\S]*?)<\/leadingDigits>/g) ?? [])].map((m) =>
+      (m[1] ?? '').replace(/\s+/g, ''),
+    );
 
     rules.push({
       pattern,
       format,
       ...(nationalPrefixFormattingRule ? { nationalPrefixFormattingRule } : {}),
+      ...(leadingDigits.length > 0 ? { leadingDigits } : {}),
       ...(intlFormat ? { intlFormat } : {}),
     });
   }
