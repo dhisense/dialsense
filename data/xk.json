@@ -1,0 +1,79 @@
+{
+  "XK": {
+    "region": "XK",
+    "callingCode": "383",
+    "nationalNumberPattern": "^(?:38\\d{6,10}|(?:2[89]|39)(?:0\\d{5,6}|[1-9]\\d{5}))$",
+    "possibleLengths": [
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:4[3-9]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:38\\d{6,10}|(?:2[89]|39)(?:0\\d{5,6}|[1-9]\\d{5}))$",
+        "possibleLengths": [
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:900\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{5})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[89]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2-4]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "2|39"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{7,10})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "3"
+        ]
+      }
+    ]
+  }
+}

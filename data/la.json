@@ -1,0 +1,52 @@
+{
+  "LA": {
+    "region": "LA",
+    "callingCode": "856",
+    "nationalNumberPattern": "^(?:(?:2[13]|[35-7][14]|41|8[1468])\\d{6})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:20(?:[23579]\\d|8[78])|30[24]\\d)\\d{6}|30\\d{7})$",
+        "possibleLengths": [
+          9,
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2[13]|[35-7][14]|41|8[1468])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "2[13]|3[14]|[4-8]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{3})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "3"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[23]"
+        ]
+      }
+    ]
+  }
+}

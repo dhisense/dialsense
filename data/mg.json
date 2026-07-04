@@ -1,0 +1,41 @@
+{
+  "MG": {
+    "region": "MG",
+    "callingCode": "261",
+    "nationalNumberPattern": "^(?:2072[29]\\d{4}|20(?:2\\d|4[47]|5[3467]|6[279]|7[356]|8[268]|9[2457])\\d{5})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:3[2-9]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2072[29]\\d{4}|20(?:2\\d|4[47]|5[3467]|6[279]|7[356]|8[268]|9[2457])\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:22\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{3})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[23]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "NR": {
+    "region": "NR",
+    "callingCode": "674",
+    "nationalNumberPattern": "^(?:444\\d{4})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:222|55[3-9]|666|777|8\\d\\d|999)\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:444\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[24-9]"
+        ]
+      }
+    ]
+  }
+}

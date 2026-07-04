@@ -1,0 +1,46 @@
+{
+  "CG": {
+    "region": "CG",
+    "callingCode": "242",
+    "nationalNumberPattern": "^(?:222[1-589]\\d{5})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:026(?:1[0-5]|6[6-9])\\d{4}|0(?:[14-6]\\d\\d|2(?:40|5[5-8]|6[07-9]))\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:222[1-589]\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:80[0-2]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d)(\\d{4})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "8"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[02]"
+        ]
+      }
+    ]
+  }
+}

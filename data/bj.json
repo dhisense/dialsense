@@ -1,0 +1,52 @@
+{
+  "BJ": {
+    "region": "BJ",
+    "callingCode": "229",
+    "nationalNumberPattern": "^(?:012\\d{7})$",
+    "possibleLengths": [
+      10
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:01(?:2[5-9]|[4-69]\\d)\\d{6})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:012\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:857[58]\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:81\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "8"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4 $5",
+        "leadingDigits": [
+          "0"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "SL": {
+    "region": "SL",
+    "callingCode": "232",
+    "nationalNumberPattern": "^(?:22[2-4][2-9]\\d{4})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:25|3[0-5]|66|7\\d|8[08]|9[09])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:22[2-4][2-9]\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{6})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "[236-9]"
+        ]
+      }
+    ]
+  }
+}

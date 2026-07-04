@@ -1,0 +1,46 @@
+{
+  "GW": {
+    "region": "GW",
+    "callingCode": "245",
+    "nationalNumberPattern": "^(?:443\\d{6})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:9(?:5\\d|6[569]|77)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:443\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:40\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "40"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[49]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "FJ": {
+    "region": "FJ",
+    "callingCode": "679",
+    "nationalNumberPattern": "^(?:603\\d{4}|(?:3[0-5]|6[25-7]|8[58])\\d{5})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:[279]\\d|45|5[01568]|8[034679])\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:603\\d{4}|(?:3[0-5]|6[25-7]|8[58])\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:0800\\d{7})$",
+        "possibleLengths": [
+          11
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[235-9]|45"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "0"
+        ]
+      }
+    ]
+  }
+}

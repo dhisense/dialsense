@@ -1,0 +1,46 @@
+{
+  "GN": {
+    "region": "GN",
+    "callingCode": "224",
+    "nationalNumberPattern": "^(?:3(?:0(?:24|3[12]|4[1-35-7]|5[13]|6[189]|[78]1|9[1478])|1\\d\\d)\\d{4})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:6[0-356]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:3(?:0(?:24|3[12]|4[1-35-7]|5[13]|6[189]|[78]1|9[1478])|1\\d\\d)\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:722\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "3"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[67]"
+        ]
+      }
+    ]
+  }
+}

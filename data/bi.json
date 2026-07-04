@@ -1,0 +1,33 @@
+{
+  "BI": {
+    "region": "BI",
+    "callingCode": "257",
+    "nationalNumberPattern": "^(?:(?:22|31)\\d{6})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:29|6[1-9]|7[125-9])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:22|31)\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[2367]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "TG": {
+    "region": "TG",
+    "callingCode": "228",
+    "nationalNumberPattern": "^(?:2(?:2[2-7]|3[23]|4[45]|55|6[67]|77)\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:7[0-289]|9[0-36-9])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2(?:2[2-7]|3[23]|4[45]|55|6[67]|77)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[279]"
+        ]
+      }
+    ]
+  }
+}

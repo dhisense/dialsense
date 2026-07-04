@@ -1,0 +1,45 @@
+{
+  "HT": {
+    "region": "HT",
+    "callingCode": "509",
+    "nationalNumberPattern": "^(?:2(?:2\\d|5[1-5]|81|9[149])\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:[34]\\d|5[568])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2(?:2\\d|5[1-5]|81|9[149])\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:8\\d{7})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:9(?:[67][0-4]|8[0-3589]|9\\d)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[2-589]"
+        ]
+      }
+    ]
+  }
+}

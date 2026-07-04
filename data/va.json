@@ -1,0 +1,78 @@
+{
+  "VA": {
+    "region": "VA",
+    "callingCode": "39",
+    "nationalNumberPattern": "^(?:06698\\d{1,6})$",
+    "possibleLengths": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:3[1-9]\\d{8}|3[2-9]\\d{7})$",
+        "possibleLengths": [
+          9,
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:06698\\d{1,6})$",
+        "possibleLengths": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80(?:0\\d{3}|3)\\d{3})$",
+        "possibleLengths": [
+          6,
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:(?:0878\\d{3}|89(?:2\\d|3[04]|4(?:[0-4]|[5-9]\\d\\d)|5[0-4]))\\d\\d|(?:1(?:44|6[346])|89(?:38|5[5-9]|9))\\d{6})$",
+        "possibleLengths": [
+          6,
+          8,
+          9,
+          10
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:84(?:[08]\\d{3}|[17])\\d{3})$",
+        "possibleLengths": [
+          6,
+          9
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:1(?:78\\d|99)\\d{6})$",
+        "possibleLengths": [
+          9,
+          10
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:55\\d{8})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "VOICEMAIL": {
+        "nationalNumberPattern": "^(?:3[2-8]\\d{9,10})$",
+        "possibleLengths": [
+          11,
+          12
+        ]
+      }
+    }
+  }
+}

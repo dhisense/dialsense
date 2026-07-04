@@ -25,15 +25,17 @@ export const REGION_GROUPS = {
     'SI', 'ES', 'SE',
   ],
   APAC: [
-    'AF', 'AU', 'BD', 'BN', 'BT', 'CN', 'HK', 'ID', 'IN', 'JP', 'KH', 'KR',
-    'LK', 'MM', 'MN', 'MO', 'MV', 'MY', 'NP', 'NZ', 'PH', 'PK', 'SG', 'TH',
-    'TL', 'TW', 'VN',
+    'AF', 'AU', 'BD', 'BN', 'BT', 'CN', 'HK', 'ID', 'IN', 'JP', 'KH', 'KP',
+    'KR', 'LA', 'LK', 'MM', 'MN', 'MO', 'MV', 'MY', 'NP', 'NZ', 'PH', 'PK',
+    'SG', 'TH', 'TL', 'TW', 'VN',
   ],
-  MIDDLE_EAST: ['AE', 'BH', 'IL', 'IQ', 'IR', 'JO', 'KW', 'LB', 'OM', 'PS', 'QA', 'SA', 'TR', 'YE'],
+  MIDDLE_EAST: ['AE', 'BH', 'IL', 'IQ', 'IR', 'JO', 'KW', 'LB', 'OM', 'PS', 'QA', 'SA', 'SY', 'TR', 'YE'],
   AFRICA: [
-    'AO', 'BW', 'CD', 'CI', 'CM', 'DZ', 'EG', 'ET', 'GH', 'KE', 'LY', 'MA',
-    'ML', 'MZ', 'NA', 'NG', 'RW', 'SD', 'SN', 'TN', 'TZ', 'UG', 'ZA', 'ZM',
-    'ZW',
+    'AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ',
+    'DZ', 'EG', 'ER', 'ET', 'GA', 'GH', 'GM', 'GN', 'GQ', 'GW', 'KE', 'KM',
+    'LR', 'LS', 'LY', 'MA', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE',
+    'NG', 'RW', 'SC', 'SD', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG',
+    'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW',
   ],
   // "Latin America" per common usage (UN geoscheme-style) - Central and
   // South America plus the Spanish/French/Dutch-heritage Caribbean, not
@@ -42,17 +44,26 @@ export const REGION_GROUPS = {
   // since those already sit in NANP above via calling code 1).
   LATAM: [
     'AR', 'BO', 'BR', 'BZ', 'CL', 'CO', 'CR', 'CU', 'EC', 'GT', 'GY', 'HN',
-    'MX', 'NI', 'PA', 'PE', 'PY', 'SR', 'SV', 'UY', 'VE',
+    'HT', 'MX', 'NI', 'PA', 'PE', 'PY', 'SR', 'SV', 'UY', 'VE',
   ],
   // Europe, but not an EU member - includes the smaller Western European
-  // microstates alongside the Balkans/Eastern Europe.
+  // microstates alongside the Balkans/Eastern Europe. VA (Vatican City)
+  // shares calling code 39 with Italy - see the IT+VA disambiguation test
+  // in metadata-batch3.test.ts.
   EUROPE_OTHER: [
     'AD', 'AL', 'BA', 'BY', 'CH', 'GB', 'GI', 'IS', 'LI', 'MC', 'MD', 'MK',
-    'NO', 'RS', 'RU', 'SM', 'UA',
+    'NO', 'RS', 'RU', 'SM', 'UA', 'VA', 'XK',
   ],
   // Caucasus + Central Asia - includes Kazakhstan, the other half of the
   // RU/KZ shared-calling-code (7) pair.
-  CENTRAL_ASIA: ['AM', 'AZ', 'GE', 'KZ', 'UZ'],
+  CENTRAL_ASIA: ['AM', 'AZ', 'GE', 'KG', 'KZ', 'TJ', 'TM', 'UZ'],
+  // Independent Pacific island nations - distinct from Australia/NZ
+  // (already in APAC as the region's major economies). Vanuatu and
+  // Solomon Islands are notably absent: their upstream metadata only
+  // defines a format rule for their newer 7-digit mobile ranges, with no
+  // rule covering their 5-digit fixed-line ranges, so extraction's
+  // self-check correctly refused to ship them - not in this repo yet.
+  PACIFIC: ['FJ', 'FM', 'KI', 'MH', 'NR', 'PG', 'PW', 'TO', 'TV', 'WS'],
 } as const;
 
 export type RegionGroupName = keyof typeof REGION_GROUPS;

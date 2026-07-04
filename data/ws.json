@@ -1,0 +1,56 @@
+{
+  "WS": {
+    "region": "WS",
+    "callingCode": "685",
+    "nationalNumberPattern": "^(?:6[1-9]\\d{3}|(?:[2-5]|60)\\d{4})$",
+    "possibleLengths": [
+      5,
+      6
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:7[1-35-8]|8(?:[3-7]|9\\d{3}))\\d{5})$",
+        "possibleLengths": [
+          7,
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:6[1-9]\\d{3}|(?:[2-5]|60)\\d{4})$",
+        "possibleLengths": [
+          5,
+          6
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{3})$",
+        "possibleLengths": [
+          6
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{5})",
+        "format": "$1",
+        "leadingDigits": [
+          "[2-5]|6[1-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3,7})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[68]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{5})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "7"
+        ]
+      }
+    ]
+  }
+}

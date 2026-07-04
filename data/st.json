@@ -1,0 +1,33 @@
+{
+  "ST": {
+    "region": "ST",
+    "callingCode": "239",
+    "nationalNumberPattern": "^(?:22\\d{5})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:900[5-9]\\d{3}|9(?:0[1-9]|[89]\\d)\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:22\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[29]"
+        ]
+      }
+    ]
+  }
+}

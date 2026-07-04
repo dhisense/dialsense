@@ -1,0 +1,35 @@
+{
+  "SS": {
+    "region": "SS",
+    "callingCode": "211",
+    "nationalNumberPattern": "^(?:1[89]\\d{7})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:12|9[1257-9])\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:1[89]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[19]"
+        ]
+      }
+    ]
+  }
+}

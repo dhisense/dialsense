@@ -1,0 +1,43 @@
+{
+  "MW": {
+    "region": "MW",
+    "callingCode": "265",
+    "nationalNumberPattern": "^(?:1[2-9]\\d{5})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:111\\d{6}|(?:2[12]|31|77|[89][89])\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:1[2-9]\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "1[2-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[1-37-9]"
+        ]
+      }
+    ]
+  }
+}

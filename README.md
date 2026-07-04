@@ -46,9 +46,15 @@ the `Metadata` shape exported from `dialsense/metadata`.
 
 Country data lives in [`data/`](data) - all 25 NANP territories (US, Canada,
 and the Caribbean/Pacific territories sharing calling code `1`), all 27 EU
-member states, Russia + Kazakhstan (a second real case of one calling code
-covering multiple regions, alongside NANP's), and a growing set of other
-major markets, 161 countries so far. Each is extracted from Google's
+member states, Russia + Kazakhstan and Italy + Vatican City (two further
+real cases of one calling code covering multiple regions, alongside
+NANP's), and essentially the full rest of the world's countries and
+territories, 209 in total (Vanuatu and Solomon Islands are the two
+exceptions for now - their upstream metadata only defines a format rule
+for their newer 7-digit mobile ranges, not their 5-digit fixed-line
+ranges, so the extraction self-check correctly refuses to ship them
+rather than mis-format them).
+Each is extracted from Google's
 `libphonenumber` via
 [`scripts/extract-metadata.ts`](scripts/extract-metadata.ts), with source
 commit/version tracked per-file in [`data/sources.json`](data/sources.json).
@@ -85,7 +91,8 @@ setup({ metadata: { ...us, ...gb } });
 
 For a whole region - e.g. "all of the EU" - `dialsense/regions` exports
 curated ISO-code lists (`REGION_GROUPS.EU`, `.NANP`, `.APAC`,
-`.MIDDLE_EAST`, `.AFRICA`, `.LATAM`, `.EUROPE_OTHER`, `.CENTRAL_ASIA`, plus `ALL_REGIONS`
+`.MIDDLE_EAST`, `.AFRICA`, `.LATAM`, `.EUROPE_OTHER`, `.CENTRAL_ASIA`,
+`.PACIFIC`, plus `ALL_REGIONS`
 for every shipped country) so you don't have to hand-type and maintain
 that list yourself - the lists themselves are just strings, so importing
 `dialsense/regions` on its own costs nothing. You still import each

@@ -1,0 +1,51 @@
+{
+  "SC": {
+    "region": "SC",
+    "callingCode": "248",
+    "nationalNumberPattern": "^(?:4[2-46]\\d{5})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:2[125-8]\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:4[2-46]\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800[08]\\d{3})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:85\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:971\\d{4}|(?:64|95)\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[246]|9[57]"
+        ]
+      }
+    ]
+  }
+}

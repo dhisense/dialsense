@@ -1,0 +1,39 @@
+{
+  "MR": {
+    "region": "MR",
+    "callingCode": "222",
+    "nationalNumberPattern": "^(?:(?:25[08]|35\\d|45[1-7])\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:[2-4][0-46-9]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:25[08]|35\\d|45[1-7])\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[2-48]"
+        ]
+      }
+    ]
+  }
+}

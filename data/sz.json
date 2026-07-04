@@ -1,0 +1,58 @@
+{
+  "SZ": {
+    "region": "SZ",
+    "callingCode": "268",
+    "nationalNumberPattern": "^(?:[23][2-5]\\d{6})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:7[5-9]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:[23][2-5]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:0800\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:900\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:70\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{4})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[0237]"
+        ]
+      },
+      {
+        "pattern": "(\\d{5})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "9"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "TD": {
+    "region": "TD",
+    "callingCode": "235",
+    "nationalNumberPattern": "^(?:22(?:[37-9]0|5[0-5]|6[89])\\d{4})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:3[01]|[69]\\d|77|8[5-7])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:22(?:[37-9]0|5[0-5]|6[89])\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[236-9]"
+        ]
+      }
+    ]
+  }
+}

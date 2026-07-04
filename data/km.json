@@ -1,0 +1,39 @@
+{
+  "KM": {
+    "region": "KM",
+    "callingCode": "269",
+    "nationalNumberPattern": "^(?:7[4-7]\\d{5})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:[34]\\d{6})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:7[4-7]\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:8\\d{6})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[3478]"
+        ]
+      }
+    ]
+  }
+}
