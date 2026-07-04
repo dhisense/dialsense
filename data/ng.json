@@ -1,0 +1,87 @@
+{
+  "NG": {
+    "region": "NG",
+    "callingCode": "234",
+    "nationalNumberPattern": "^(?:20(?:[1259]\\d|3[013-9]|4[1-8]|6[024-689]|7[1-79]|8[2-9])\\d{6})$",
+    "possibleLengths": [
+      10
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:702[0-24-9]|819[01])\\d{6}|(?:7(?:0[13-9]|[12]\\d)|8(?:0[1-9]|1[0-8])|9(?:0[1-9]|1[1-6]))\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:20(?:[1259]\\d|3[013-9]|4[1-8]|6[024-689]|7[1-79]|8[2-9])\\d{6})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{7,11})$",
+        "possibleLengths": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:700\\d{7,11})$",
+        "possibleLengths": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[7-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "20[129]"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{2})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "2"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{4})(\\d{4,5})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[78]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{5})(\\d{5,6})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[78]"
+        ]
+      }
+    ]
+  }
+}

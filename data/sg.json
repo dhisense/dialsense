@@ -1,0 +1,88 @@
+{
+  "SG": {
+    "region": "SG",
+    "callingCode": "65",
+    "nationalNumberPattern": "^(?:662[0-24-9]\\d{4}|6(?:[0-578]\\d|6[013-57-9]|9[0-35-9])\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:80[1-9]\\d{5}|(?:8[1-9]|9[0-8])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:662[0-24-9]\\d{4}|6(?:[0-578]\\d|6[013-57-9]|9[0-35-9])\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:(?:18|8)00\\d{7})$",
+        "possibleLengths": [
+          10,
+          11
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:1900\\d{7})$",
+        "possibleLengths": [
+          11
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:(?:3[12]\\d|666)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:7000\\d{7})$",
+        "possibleLengths": [
+          11
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{4,5})",
+        "format": "$1",
+        "leadingDigits": [
+          "1[013-9]|77",
+          "1(?:[013-8]|9(?:0[1-9]|[1-9]))|77"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{4})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[369]|8(?:0[1-9]|[1-9])"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "8"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{4})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "7"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "1"
+        ]
+      }
+    ]
+  }
+}

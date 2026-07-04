@@ -1,0 +1,128 @@
+{
+  "IL": {
+    "region": "IL",
+    "callingCode": "972",
+    "nationalNumberPattern": "^(?:153\\d{8,9}|29[1-9]\\d{5}|(?:2[0-8]|[3489]\\d)\\d{6})$",
+    "possibleLengths": [
+      8,
+      11,
+      12
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:55(?:4(?:0[0-3]|[16]0)|57[0-289])\\d{4}|5(?:(?:[0-2][02-9]|[36]\\d|[49][2-9]|8[3-7])\\d|5(?:01|2\\d|3[0-3]|4[3-5]|5[0-25689]|6[6-8]|7[0-267]|8[7-9]|9[1-9]))\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:153\\d{8,9}|29[1-9]\\d{5}|(?:2[0-8]|[3489]\\d)\\d{6})$",
+        "possibleLengths": [
+          8,
+          11,
+          12
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:1(?:255|80[019]\\d{3})\\d{3})$",
+        "possibleLengths": [
+          7,
+          10
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:1212\\d{4}|1(?:200|9(?:0[0-2]|19|9\\d))\\d{6})$",
+        "possibleLengths": [
+          8,
+          10
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:1700\\d{6})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:7(?:38(?:[05]\\d|8[0138])|8(?:33|55|77|81)\\d)\\d{4}|7(?:18|2[23]|3[237]|47|6[258]|7\\d|82|9[2-9])\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:1599\\d{6})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "VOICEMAIL": {
+        "nationalNumberPattern": "^(?:151\\d{8,9})$",
+        "possibleLengths": [
+          11,
+          12
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{4})(\\d{3})",
+        "format": "$1-$2",
+        "leadingDigits": [
+          "125"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{2})(\\d{2})",
+        "format": "$1-$2-$3",
+        "leadingDigits": [
+          "121"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{4})",
+        "format": "$1-$2-$3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2-489]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1-$2-$3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[57]"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{3})(\\d{3})",
+        "format": "$1-$2-$3",
+        "leadingDigits": [
+          "12"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{6})",
+        "format": "$1-$2",
+        "leadingDigits": [
+          "159"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1-$2-$3-$4",
+        "leadingDigits": [
+          "1[7-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{1,2})(\\d{3})(\\d{4})",
+        "format": "$1-$2 $3-$4",
+        "leadingDigits": [
+          "15"
+        ]
+      }
+    ]
+  }
+}

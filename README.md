@@ -45,9 +45,11 @@ like NANP's `1` can map to several regions, e.g. US and Canada) and matches
 the `Metadata` shape exported from `dialsense/metadata`.
 
 Country data lives in [`data/`](data) - all 25 NANP territories (US, Canada,
-and the Caribbean/Pacific territories sharing calling code `1`) plus all 27
-EU member states and a handful of other major markets, 56 countries so far.
-Each is extracted from Google's `libphonenumber` via
+and the Caribbean/Pacific territories sharing calling code `1`), all 27 EU
+member states, Russia + Kazakhstan (a second real case of one calling code
+covering multiple regions, alongside NANP's), and a growing set of other
+major markets, 80 countries so far. Each is extracted from Google's
+`libphonenumber` via
 [`scripts/extract-metadata.ts`](scripts/extract-metadata.ts), with source
 commit/version tracked per-file in [`data/sources.json`](data/sources.json).
 A daily GitHub Actions workflow ([`metadata-check.yml`](.github/workflows/metadata-check.yml))

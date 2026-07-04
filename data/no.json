@@ -1,0 +1,83 @@
+{
+  "NO": {
+    "region": "NO",
+    "callingCode": "47",
+    "nationalNumberPattern": "^(?:(?:2[1-4]|3[1-3578]|5[1-35-7]|6[1-46-9]|7[0-8])\\d{6})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:[49]\\d{7})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2[1-4]|3[1-3578]|5[1-35-7]|6[1-46-9]|7[0-8])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80[01]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:82[09]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:810(?:0[0-6]|[2-8]\\d)\\d{3})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:880\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:85[0-5]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:(?:0[235-9]|81(?:0(?:0[7-9]|1\\d)|5\\d\\d))\\d{3})$",
+        "possibleLengths": [
+          5,
+          8
+        ]
+      },
+      "VOICEMAIL": {
+        "nationalNumberPattern": "^(?:81[23]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "8"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[2-79]"
+        ]
+      }
+    ]
+  }
+}

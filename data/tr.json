@@ -1,0 +1,105 @@
+{
+  "TR": {
+    "region": "TR",
+    "callingCode": "90",
+    "nationalNumberPattern": "^(?:(?:2(?:1[26]|[28][2468]|[3-5][268]|[67][246])|3(?:[13][28]|[24-6][2468]|[78][02468]|92)|4(?:[16][246]|[23578][2468]|4[26]))\\d{7})$",
+    "possibleLengths": [
+      10
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:561(?:011|61\\d)\\d{4}|5(?:[03-5]\\d|1[06]|24|6[24]|7[245]|9[46])\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2(?:1[26]|[28][2468]|[3-5][268]|[67][246])|3(?:[13][28]|[24-6][2468]|[78][02468]|92)|4(?:[16][246]|[23578][2468]|4[26]))\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:8(?:00\\d{7}(?:\\d{2,3})?|11\\d{7}))$",
+        "possibleLengths": [
+          10,
+          12,
+          13
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:(?:8[89]8|900)\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:592(?:21[12]|461)\\d{4})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:850\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "PAGER": {
+        "nationalNumberPattern": "^(?:512\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:444\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d)(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "444"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "512|8[01589]|90"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "5[0-79]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "[24][1-8]|3[1-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{6,7})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "80"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "CH": {
+    "region": "CH",
+    "callingCode": "41",
+    "nationalNumberPattern": "^(?:(?:2[12467]|3[1-4]|4[134]|5[256]|6[12]|[7-9]1)\\d{7})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:6[89]|7[235-9])\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2[12467]|3[1-4]|4[134]|5[256]|6[12]|[7-9]1)\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90[016]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:84[0248]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:878\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PAGER": {
+        "nationalNumberPattern": "^(?:74[0248]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:5[18]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOICEMAIL": {
+        "nationalNumberPattern": "^(?:860\\d{9})$",
+        "possibleLengths": [
+          12
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8[047]|90"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2-79]|81"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4 $5",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8"
+        ]
+      }
+    ]
+  }
+}
