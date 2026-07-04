@@ -8,8 +8,56 @@ A modular, type-safe, and tree-shakable TypeScript library for phone number vali
 - Type-Safe: No more try/catch—handle ParseResult objects explicitly.
 - Reachability-Ready: Designed to plug into real-time operational lookup services (HLR/CNAM) via your own provider.
 
+## Bundle size
+
+Real measurements, not estimates - minified via `esbuild` and gzipped
+(`gzip -9`). The core-library figures reflect actual tree-shaking
+behavior: bundling an entry point that only imports `parse`/`isValid`
+measurably drops the unused `format`/`asYouType`/reachability code,
+rather than assuming a bundler will.
+
+**Core library:**
+
+| Import | Minified | Minified + gzip |
+|---|---|---|
+| `import { parse, isValid } from 'dialsense'` | 2.1 KB | 0.9 KB |
+| Full surface (`parse`, `isValid`, `asyncParse`, `format`, `asYouType`, `getCountries`, `getCountryCallingCode`, `isSupportedCountry`) | 4.1 KB | 1.7 KB |
+
+**Per-country metadata** (each is its own file - add only what you use):
+
+| Country | Minified | Minified + gzip |
+|---|---|---|
+| Smallest shipped (São Tomé and Príncipe) | 0.4 KB | 0.2 KB |
+| France | 1.4 KB | 0.5 KB |
+| United States | 3.0 KB | 0.7 KB |
+| Germany | 5.1 KB | 1.2 KB |
+| United Kingdom | 5.1 KB | 1.2 KB |
+| India | 7.5 KB | 1.8 KB |
+| China (largest shipped) | 11.2 KB | 1.6 KB |
+
+So a single-country app - e.g. `parse`/`isValid` + US metadata - ships
+roughly **2.1 KB + 3.0 KB ≈ 5.1 KB minified**, not the cost of every
+country DialSense supports.
+
+**Whole regions** (via `dialsense/regions`, see
+[A whole region](#a-whole-region)):
+
+| Group | Countries | Minified | Minified + gzip |
+|---|---|---|---|
+| `PACIFIC` | 10 | 6.1 KB | 1.1 KB |
+| `CENTRAL_ASIA` | 8 | 10.6 KB | 2.2 KB |
+| `MIDDLE_EAST` | 15 | 16.4 KB | 2.7 KB |
+| `EUROPE_OTHER` | 19 | 26.6 KB | 4.2 KB |
+| `NANP` | 25 | 28.7 KB | 3.0 KB |
+| `LATAM` | 22 | 32.0 KB | 4.7 KB |
+| `AFRICA` | 54 | 43.9 KB | 5.8 KB |
+| `EU` | 27 | 48.6 KB | 6.8 KB |
+| `APAC` | 29 | 66.4 KB | 10.2 KB |
+| `ALL_REGIONS` (everything, 209 countries) | 209 | 279.3 KB | 36.8 KB |
+
 ## Contents
 
+- [Bundle size](#bundle-size)
 - [Install](#install)
 - [Usage](#usage)
 - [Adding country validation](#adding-country-validation)

@@ -62,7 +62,7 @@
     "metadata:extract": "tsx scripts/extract-metadata.ts",
     "metadata:check": "tsx scripts/monitor-upstream.ts"
   },
-  "keywords": [],
+  "keywords": ["google", "libphonenumber", "libphonenumber-js"],
   "author": "vinpro9",
   "license": "Apache-2.0",
   "repository": {
