@@ -1,0 +1,81 @@
+{
+  "MD": {
+    "region": "MD",
+    "callingCode": "373",
+    "nationalNumberPattern": "^(?:(?:(?:2[1-9]|3[1-79])\\d|5(?:33|5[257]))\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:562\\d{5}|(?:6\\d|7[16-9])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:(?:2[1-9]|3[1-79])\\d|5(?:33|5[257]))\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90[056]\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:808\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:3[08]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:803\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{5})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[89]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "22|3"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[25-7]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "RS": {
+    "region": "RS",
+    "callingCode": "381",
+    "nationalNumberPattern": "^(?:(?:11[1-9]\\d|(?:2[389]|39)(?:0[2-9]|[2-9]\\d))\\d{3,8}|(?:1[02-9]|2[0-24-7]|3[0-8])[2-9]\\d{4,9})$",
+    "possibleLengths": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:6(?:[0-689]|7\\d)\\d{6,7})$",
+        "possibleLengths": [
+          8,
+          9,
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:11[1-9]\\d|(?:2[389]|39)(?:0[2-9]|[2-9]\\d))\\d{3,8}|(?:1[02-9]|2[0-24-7]|3[0-8])[2-9]\\d{4,9})$",
+        "possibleLengths": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{3,9})$",
+        "possibleLengths": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:(?:78\\d|90[0169])\\d{3,7})$",
+        "possibleLengths": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:7[06]\\d{4,10})$",
+        "possibleLengths": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3,9})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "(?:2[389]|39)0|[7-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{5,10})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[1-36]"
+        ]
+      }
+    ]
+  }
+}

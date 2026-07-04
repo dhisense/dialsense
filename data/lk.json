@@ -1,0 +1,49 @@
+{
+  "LK": {
+    "region": "LK",
+    "callingCode": "94",
+    "nationalNumberPattern": "^(?:(?:12[2-9]|602|8[12]\\d|9(?:1\\d|22|9[245]))\\d{6}|(?:11|2[13-7]|3[1-8]|4[157]|5[12457]|6[35-7])[2-57]\\d{6})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:7(?:[0-25-8]\\d|4[0-4])\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:12[2-9]|602|8[12]\\d|9(?:1\\d|22|9[245]))\\d{6}|(?:11|2[13-7]|3[1-8]|4[157]|5[12457]|6[35-7])[2-57]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:1973\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "7"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[1-689]"
+        ]
+      }
+    ]
+  }
+}

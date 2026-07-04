@@ -1,0 +1,53 @@
+{
+  "IQ": {
+    "region": "IQ",
+    "callingCode": "964",
+    "nationalNumberPattern": "^(?:1\\d{7}|(?:2[13-5]|3[02367]|4[023]|5[03]|6[026])\\d{6,7})$",
+    "possibleLengths": [
+      8,
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:7[3-9]\\d{8})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:1\\d{7}|(?:2[13-5]|3[02367]|4[023]|5[03]|6[026])\\d{6,7})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "1"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2-6]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "7"
+        ]
+      }
+    ]
+  }
+}

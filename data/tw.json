@@ -1,0 +1,127 @@
+{
+  "TW": {
+    "region": "TW",
+    "callingCode": "886",
+    "nationalNumberPattern": "^(?:(?:2[2-8]\\d|370|55[01]|7[1-9])\\d{6}|4(?:(?:0(?:0[1-9]|[2-48]\\d)|1[023]\\d)\\d{4,5}|(?:[239]\\d\\d|4(?:0[56]|12|49))\\d{5})|6(?:[01]\\d{7}|4(?:0[56]|12|24|4[09])\\d{4,5})|8(?:(?:2(?:3\\d|4[0-269]|[578]0|66)|36[24-9]|90\\d\\d)\\d{4}|4(?:0[56]|12|24|4[09])\\d{4,5})|(?:2(?:2(?:0\\d\\d|4(?:0[68]|[249]0|3[0-467]|5[0-25-9]|6[0235689]))|(?:3(?:[09]\\d|1[0-4])|(?:4\\d|5[0-49]|6[0-29]|7[0-5])\\d)\\d)|(?:(?:3[2-9]|5[2-8]|6[0-35-79]|8[7-9])\\d\\d|4(?:2(?:[089]\\d|7[1-9])|(?:3[0-4]|[78]\\d|9[01])\\d))\\d)\\d{3})$",
+    "possibleLengths": [
+      8,
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:40001[0-2]|9[0-8]\\d{4})\\d{3})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2[2-8]\\d|370|55[01]|7[1-9])\\d{6}|4(?:(?:0(?:0[1-9]|[2-48]\\d)|1[023]\\d)\\d{4,5}|(?:[239]\\d\\d|4(?:0[56]|12|49))\\d{5})|6(?:[01]\\d{7}|4(?:0[56]|12|24|4[09])\\d{4,5})|8(?:(?:2(?:3\\d|4[0-269]|[578]0|66)|36[24-9]|90\\d\\d)\\d{4}|4(?:0[56]|12|24|4[09])\\d{4,5})|(?:2(?:2(?:0\\d\\d|4(?:0[68]|[249]0|3[0-467]|5[0-25-9]|6[0235689]))|(?:3(?:[09]\\d|1[0-4])|(?:4\\d|5[0-49]|6[0-29]|7[0-5])\\d)\\d)|(?:(?:3[2-9]|5[2-8]|6[0-35-79]|8[7-9])\\d\\d|4(?:2(?:[089]\\d|7[1-9])|(?:3[0-4]|[78]\\d|9[01])\\d))\\d)\\d{3})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80[0-79]\\d{6}|800\\d{5})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:20(?:[013-9]\\d\\d|2)\\d{4})$",
+        "possibleLengths": [
+          7,
+          9
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:99\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:7010(?:[0-2679]\\d|3[0-7]|8[0-5])\\d{5}|70\\d{8})$",
+        "possibleLengths": [
+          10,
+          11
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:50[0-46-9]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d)(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "202"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{5})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "826"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "83"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "82"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[25]0|37|49|8[09]"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{3,4})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[23568]|4(?:0[02-48]|[1-478])|7[1-9]",
+          "[23568]|4(?:0[2-48]|[1-478])|(?:400|7)[1-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[49]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{4})(\\d{4,5})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "7"
+        ]
+      }
+    ]
+  }
+}

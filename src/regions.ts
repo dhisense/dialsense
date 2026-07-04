@@ -6,9 +6,10 @@
 // itself not a hand-typed, easy-to-typo, easy-to-forget-one step.
 //
 // Grouped by common enterprise usage (region of operation), not strictly
-// by continent - e.g. Russia and Kazakhstan sit in EUROPE_OTHER as the
-// pair that shares calling code 7, rather than splitting across
-// Europe/Central Asia.
+// by continent - e.g. Russia sits in EUROPE_OTHER (paired historically
+// with Kazakhstan via shared calling code 7, though KZ itself now lives
+// in CENTRAL_ASIA below - see metadata-major-markets.test.ts for the
+// calling-code-sharing behavior, which is independent of group naming).
 export const REGION_GROUPS = {
   // All NANP territories: the 25 regions sharing calling code "1"
   // (US, Canada, and the Caribbean/Pacific territories).
@@ -23,12 +24,18 @@ export const REGION_GROUPS = {
     'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK',
     'SI', 'ES', 'SE',
   ],
-  APAC: ['AU', 'CN', 'HK', 'ID', 'IN', 'JP', 'KR', 'NZ', 'PH', 'PK', 'SG', 'VN'],
-  MIDDLE_EAST: ['AE', 'IL', 'SA', 'TR'],
-  AFRICA: ['EG', 'NG', 'ZA'],
-  LATAM: ['AR', 'BR', 'CO', 'MX'],
-  // Europe, but not an EU member - includes the RU/KZ pair (calling code 7).
-  EUROPE_OTHER: ['CH', 'GB', 'KZ', 'NO', 'RU'],
+  APAC: [
+    'AU', 'BD', 'CN', 'HK', 'ID', 'IN', 'JP', 'KH', 'KR', 'LK', 'MM', 'MN',
+    'MO', 'MY', 'NZ', 'PH', 'PK', 'SG', 'TH', 'TW', 'VN',
+  ],
+  MIDDLE_EAST: ['AE', 'BH', 'IL', 'IQ', 'JO', 'KW', 'LB', 'OM', 'QA', 'SA', 'TR'],
+  AFRICA: ['DZ', 'EG', 'ET', 'GH', 'KE', 'MA', 'NG', 'TN', 'TZ', 'UG', 'ZA'],
+  LATAM: ['AR', 'BR', 'CL', 'CO', 'EC', 'MX', 'PE', 'VE'],
+  // Europe, but not an EU member.
+  EUROPE_OTHER: ['AL', 'BA', 'BY', 'CH', 'GB', 'IS', 'MD', 'MK', 'NO', 'RS', 'RU', 'UA'],
+  // Caucasus + Central Asia - includes Kazakhstan, the other half of the
+  // RU/KZ shared-calling-code (7) pair.
+  CENTRAL_ASIA: ['AM', 'AZ', 'GE', 'KZ', 'UZ'],
 } as const;
 
 export type RegionGroupName = keyof typeof REGION_GROUPS;
@@ -36,7 +43,7 @@ export type RegionGroupName = keyof typeof REGION_GROUPS;
 // Every region code across all groups, deduplicated - a "just give me
 // everything DialSense ships" convenience for the cases where an
 // enterprise consumer genuinely operates everywhere and would rather
-// import all 80 country files than maintain their own list.
+// import all shipped country files than maintain their own list.
 export const ALL_REGIONS: readonly string[] = Array.from(
   new Set(Object.values(REGION_GROUPS).flat()),
 ).sort();

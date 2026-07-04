@@ -1,0 +1,82 @@
+{
+  "TZ": {
+    "region": "TZ",
+    "callingCode": "255",
+    "nationalNumberPattern": "^(?:2[2-8]\\d{7})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:6[1-35-9]|7\\d)\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2[2-8]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80[08]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:8(?:40|6[01])\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:41\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[89]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[24]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{7})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "5"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[67]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "MA": {
+    "region": "MA",
+    "callingCode": "212",
+    "nationalNumberPattern": "^(?:5(?:(?:18|4[0679]|5[03])\\d|2(?:[0-25-79]\\d|3[1-578]|4[02-46-8]|8[0235-9])|3(?:[0-47]\\d|5[02-9]|6[02-8]|8[014-9]|9[3-9]))\\d{5})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:6(?:[0-79]\\d|8[0-247-9])|7(?:[016-8]\\d|2[0-8]|5[0-5]))\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:5(?:(?:18|4[0679]|5[03])\\d|2(?:[0-25-79]\\d|3[1-578]|4[02-46-8]|8[0235-9])|3(?:[0-47]\\d|5[02-9]|6[02-8]|8[014-9]|9[3-9]))\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80[0-7]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:89\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:(?:592(?:4[0-2]|93)|80[89]\\d\\d)\\d{4})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{4})(\\d{5})",
+        "format": "$1-$2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "892"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{7})",
+        "format": "$1-$2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8(?:0[0-7]|9)"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4 $5",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[5-8]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "TN": {
+    "region": "TN",
+    "callingCode": "216",
+    "nationalNumberPattern": "^(?:81200\\d{3}|(?:3[0-2]|7\\d)\\d{6})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:3(?:001|[12]40)\\d{4}|(?:(?:[259]\\d|4[0-8])\\d|3(?:1[1-35]|6[0-4]|91))\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:81200\\d{3}|(?:3[0-2]|7\\d)\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:8010\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:88\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:8[12]10\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[2-57-9]"
+        ]
+      }
+    ]
+  }
+}

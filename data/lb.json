@@ -1,0 +1,57 @@
+{
+  "LB": {
+    "region": "LB",
+    "callingCode": "961",
+    "nationalNumberPattern": "^(?:7(?:62|8[0-6]|9[04-9])\\d{4}|(?:[14-69]\\d|2(?:[14-69]\\d|[78][1-9])|7[2-57]|8[02-9])\\d{5})$",
+    "possibleLengths": [
+      7,
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:(?:3|81)\\d|7(?:[01]\\d|6[013-9]|8[7-9]|9[0-4]))\\d{5})$",
+        "possibleLengths": [
+          7,
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:7(?:62|8[0-6]|9[04-9])\\d{4}|(?:[14-69]\\d|2(?:[14-69]\\d|[78][1-9])|7[2-57]|8[02-9])\\d{5})$",
+        "possibleLengths": [
+          7,
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:9[01]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:80\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[13-69]|7(?:[2-57]|62|8[0-6]|9[04-9])|8[02-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[27-9]"
+        ]
+      }
+    ]
+  }
+}

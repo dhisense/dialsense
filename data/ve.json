@@ -1,0 +1,53 @@
+{
+  "VE": {
+    "region": "VE",
+    "callingCode": "58",
+    "nationalNumberPattern": "^(?:(?:2(?:12|3[457-9]|[467]\\d|[58][1-9]|9[1-6])|[4-6]00)\\d{7})$",
+    "possibleLengths": [
+      10
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:4(?:1[24-8]|2[246])\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2(?:12|3[457-9]|[467]\\d|[58][1-9]|9[1-6])|[4-6]00)\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90[01]\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:501\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{7})",
+        "format": "$1-$2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[24-689]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "EC": {
+    "region": "EC",
+    "callingCode": "593",
+    "nationalNumberPattern": "^(?:[2-7][2-7]\\d{6})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:964[0-2]\\d{5}|9(?:39|[57][89]|6[0-36-9]|[89]\\d)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:[2-7][2-7]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:1800\\d{7}|1[78]00\\d{6})$",
+        "possibleLengths": [
+          10,
+          11
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:[2-7]890\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1-$2",
+        "leadingDigits": [
+          "[2-7]"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{4})",
+        "format": "$1 $2-$3",
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "[2-7]"
+        ],
+        "intlFormat": "$1-$2-$3"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "9"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "1"
+        ]
+      }
+    ]
+  }
+}

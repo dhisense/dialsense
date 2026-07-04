@@ -1,0 +1,68 @@
+{
+  "KE": {
+    "region": "KE",
+    "callingCode": "254",
+    "nationalNumberPattern": "^(?:(?:4[245]|5[1-79]|6[01457-9])\\d{5,7}|(?:4[136]|5[08]|62)\\d{7}|(?:[24]0|66)\\d{6,7})$",
+    "possibleLengths": [
+      7,
+      8,
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:1(?:0[0-8]|1\\d|2[014]|30|4[0-5])|7\\d\\d)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:4[245]|5[1-79]|6[01457-9])\\d{5,7}|(?:4[136]|5[08]|62)\\d{7}|(?:[24]0|66)\\d{6,7})$",
+        "possibleLengths": [
+          7,
+          8,
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800[02-8]\\d{5,6})$",
+        "possibleLengths": [
+          9,
+          10
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:900[02-9]\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{5,7})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[24-6]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{6})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[17]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[89]"
+        ]
+      }
+    ]
+  }
+}

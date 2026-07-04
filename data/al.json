@@ -1,0 +1,91 @@
+{
+  "AL": {
+    "region": "AL",
+    "callingCode": "355",
+    "nationalNumberPattern": "^(?:4505[0-2]\\d{3}|(?:[2358][16-9]\\d[2-9]|4410)\\d{4}|(?:[2358][2-5][2-9]|4(?:[2-57-9][2-9]|6\\d))\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:6(?:[78][2-9]|9\\d)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:4505[0-2]\\d{3}|(?:[2358][16-9]\\d[2-9]|4410)\\d{4}|(?:[2358][2-5][2-9]|4(?:[2-57-9][2-9]|6\\d))\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:900[1-9]\\d\\d)$",
+        "possibleLengths": [
+          6
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:808[1-9]\\d\\d)$",
+        "possibleLengths": [
+          6
+        ]
+      },
+      "PERSONAL_NUMBER": {
+        "nationalNumberPattern": "^(?:700[2-9]\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3,4})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "80|9"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "4[2-6]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2358][2-5]|4"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{5})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[23578]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "6"
+        ]
+      }
+    ]
+  }
+}
