@@ -71,6 +71,42 @@ setup({ metadata: us });
 parse('+12025550123'); // now validated against the US calling code + pattern
 ```
 
+To load several countries at once, merge their metadata objects before
+calling `setup()` - each file is keyed by region, so spreading multiple
+together just unions the keys:
+
+```ts
+import { setup } from 'dialsense/metadata';
+import us from 'dialsense/metadata/us.json' with { type: 'json' };
+import gb from 'dialsense/metadata/gb.json' with { type: 'json' };
+
+setup({ metadata: { ...us, ...gb } });
+```
+
+For a whole region - e.g. "all of the EU" - `dialsense/regions` exports
+curated ISO-code lists (`REGION_GROUPS.EU`, `.NANP`, `.APAC`,
+`.MIDDLE_EAST`, `.AFRICA`, `.LATAM`, `.EUROPE_OTHER`, plus `ALL_REGIONS`
+for every shipped country) so you don't have to hand-type and maintain
+that list yourself - the lists themselves are just strings, so importing
+`dialsense/regions` on its own costs nothing. You still import each
+country's actual data yourself, e.g. via a loop of dynamic imports as
+below - note that some bundlers turn a template-literal dynamic import
+into a "context module" covering every file it could match, which can
+pull in more than the group you actually asked for; check your bundler's
+behavior here if per-country tree-shaking matters to you at this scale:
+
+```ts
+import { setup } from 'dialsense/metadata';
+import { REGION_GROUPS } from 'dialsense/regions';
+
+const modules = await Promise.all(
+  REGION_GROUPS.EU.map((code) =>
+    import(`dialsense/metadata/${code.toLowerCase()}.json`, { with: { type: 'json' } }),
+  ),
+);
+setup({ metadata: Object.assign({}, ...modules.map((m) => m.default)) });
+```
+
 You can also hand-write metadata matching the same shape instead of using
 the shipped data:
 
@@ -195,6 +231,7 @@ is simply `null` - `asyncParse()` itself never throws.
 - `dialsense/reachability` - `IReachabilityProvider` plugin interface for real-time lookups
 - `dialsense/format` - `format()` for NATIONAL/INTERNATIONAL/E.164 display
 - `dialsense/asYouType` - `asYouType()` for live formatting as digits are typed
+- `dialsense/regions` - `REGION_GROUPS`/`ALL_REGIONS` curated ISO-code lists for bulk-loading a whole region
 
 ## Development Notes
 

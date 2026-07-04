@@ -36,6 +36,11 @@
       "import": "./dist/asYouType.js",
       "require": "./dist/asYouType.cjs"
     },
+    "./regions": {
+      "types": "./dist/regions.d.ts",
+      "import": "./dist/regions.js",
+      "require": "./dist/regions.cjs"
+    },
     "./metadata/*.json": "./data/*.json",
     "./package.json": "./package.json"
   },
@@ -50,7 +55,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsup src/core.ts src/metadata.ts src/types.ts src/reachability.ts src/format.ts src/asYouType.ts --format esm,cjs --dts --sourcemap --clean --out-dir dist",
+    "build": "tsup src/core.ts src/metadata.ts src/types.ts src/reachability.ts src/format.ts src/asYouType.ts src/regions.ts --format esm,cjs --dts --sourcemap --clean --out-dir dist",
     "prepack": "npm run typecheck && npm run build",
     "test": "npm run typecheck && tsx --test $(find tests -type f -name '*.test.ts' | sort)",
     "metadata:extract": "tsx scripts/extract-metadata.ts",
