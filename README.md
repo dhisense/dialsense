@@ -79,7 +79,7 @@ country DialSense supports.
 Not yet published to the npm registry. Install directly from GitHub for now:
 
 ```bash
-npm install github:vinpro9/dialsense
+npm install github:dhisense/dialsense
 ```
 
 Once published, this will be `npm install dialsense`. Requires Node.js >= 20 (the shipped metadata uses `import ... with { type: 'json' }` import attributes, which need it).

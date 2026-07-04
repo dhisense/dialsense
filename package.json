@@ -67,7 +67,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vinpro9/dialsense.git"
+    "url": "git+https://github.com/dhisense/dialsense.git"
   },
   "type": "module",
   "engines": {
