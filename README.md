@@ -130,6 +130,23 @@ setup({
 });
 ```
 
+### Inspecting what's currently injected
+
+`getCountries()`, `getCountryCallingCode()`, and `isSupportedCountry()` all
+read whatever was last passed to `setup()` - not the full list of
+countries DialSense ships in `data/`, which the library has no knowledge
+of at runtime until you inject it:
+
+```ts
+import { getCountries, getCountryCallingCode, isSupportedCountry } from 'dialsense/metadata';
+
+getCountries();               // ['US', 'GB'] - only what setup() was called with
+getCountryCallingCode('US');  // 1
+getCountryCallingCode('FR');  // undefined - FR was never injected
+isSupportedCountry('GB');     // true
+isSupportedCountry('FR');     // false
+```
+
 ### Number type detection
 
 Where a country's metadata includes per-type patterns (`types` on

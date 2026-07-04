@@ -75,3 +75,16 @@ export const setup = (config: { metadata: Metadata }) => {
 };
 
 export const getMetadata = (): Metadata => _metadata;
+
+// These three all read whatever's currently injected via setup() - not
+// the full set of countries DialSense ships in data/, which this module
+// has no knowledge of at runtime. A country is only "supported" once its
+// metadata has actually been passed to setup().
+export const getCountries = (): string[] => Object.keys(_metadata);
+
+export const getCountryCallingCode = (country: string): number | undefined => {
+  const region = _metadata[country];
+  return region ? Number(region.callingCode) : undefined;
+};
+
+export const isSupportedCountry = (country: string): boolean => country in _metadata;
