@@ -63,7 +63,7 @@
     "metadata:check": "tsx scripts/monitor-upstream.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "vinpro9",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
