@@ -2,27 +2,47 @@
 
 A modular, type-safe, and tree-shakable TypeScript library for phone number validation. Designed for modern web applications, DialSense offers a clean, functional API and metadata-as-a-plugin architecture to minimize bundle size while ensuring reliable telephony data parsing.
 
-## Why Dialsense?
+## Why DialSense?
 - Modern API: Pure functions, no class-based "God-objects."
 - Tree-Shakable: Import only the metadata you need.
 - Type-Safe: No more try/catch—handle ParseResult objects explicitly.
-- Telemetry-Ready: Designed to easily integrate with real-time operational lookup services (HLR/CNAM).
+- Reachability-Ready: Designed to plug into real-time operational lookup services (HLR/CNAM) via your own provider.
+
+## Contents
+
+- [Install](#install)
+- [Usage](#usage)
+- [Adding country validation](#adding-country-validation)
+  - [A single country](#a-single-country)
+  - [Multiple countries](#multiple-countries)
+  - [A whole region](#a-whole-region)
+  - [Hand-written metadata](#hand-written-metadata)
+  - [Where the data comes from](#where-the-data-comes-from)
+- [Inspecting what's currently injected](#inspecting-whats-currently-injected)
+- [Number type detection](#number-type-detection)
+- [Display formatting](#display-formatting)
+- [Live formatting as digits are typed](#live-formatting-as-digits-are-typed)
+- [Real-time reachability, carrier, and fraud/risk lookups](#real-time-reachability-carrier-and-fraudrisk-lookups)
+- [Package Exports](#package-exports)
+- [Development](#development)
 
 ## Install
 
+Not yet published to the npm registry. Install directly from GitHub for now:
+
 ```bash
-npm install
+npm install github:vinpro9/dialsense
 ```
 
-## Scripts
-
-- `npm run typecheck`: run TypeScript type checks.
-- `npm run build`: build ESM + CJS bundles and declaration files into `dist/`.
-- `npm test`: runs typecheck, then the unit tests in `tests/`.
-- `npm run metadata:extract -- <ISO_REGION...>`: (re)extract one or more countries' validation data from upstream `libphonenumber` into `data/`, e.g. `npm run metadata:extract -- US CA`.
-- `npm run metadata:check`: check whether upstream `libphonenumber` metadata has changed since `data/last-checked-commit.txt`.
+Once published, this will be `npm install dialsense`. Requires Node.js >= 20 (the shipped metadata uses `import ... with { type: 'json' }` import attributes, which need it).
 
 ## Usage
+
+Without any metadata injected (see [Adding country validation](#adding-country-validation)
+below), `parse()` only checks that input is E.164-shaped - not real
+per-country validation yet. `ParseResult` is a discriminated union, so
+`result.success` narrows which fields are available - no `try`/`catch`,
+no thrown exceptions:
 
 ```ts
 import { parse, isValid } from 'dialsense';
@@ -30,42 +50,30 @@ import { parse, isValid } from 'dialsense';
 const result = parse('+12025550123');
 
 if (result.success) {
-	console.log(result.data.e164);
+  console.log(result.data.e164); // '+12025550123'
+} else {
+  console.log(result.error);   // ParseErrorCode.TOO_SHORT / TOO_LONG / NOT_A_NUMBER
+                                // (INVALID_COUNTRY_CODE also exists on ParseErrorCode but isn't produced yet)
+  console.log(result.message); // human-readable detail
 }
 
-console.log(isValid('+12025550123'));
+console.log(isValid('+12025550123')); // true
+console.log(isValid('+123'));         // false - too short
 ```
 
 ### Adding country validation
 
-Without metadata, `parse` only checks that input is E.164-shaped. Inject
-metadata to get real per-country validation (calling code + national number
-format). Metadata is keyed by ISO region (not calling code - a calling code
-like NANP's `1` can map to several regions, e.g. US and Canada) and matches
-the `Metadata` shape exported from `dialsense/metadata`.
-
-Country data lives in [`data/`](data) - all 25 NANP territories (US, Canada,
-and the Caribbean/Pacific territories sharing calling code `1`), all 27 EU
-member states, Russia + Kazakhstan and Italy + Vatican City (two further
-real cases of one calling code covering multiple regions, alongside
-NANP's), and essentially the full rest of the world's countries and
-territories, 209 in total (Vanuatu and Solomon Islands are the two
-exceptions for now - their upstream metadata only defines a format rule
-for their newer 7-digit mobile ranges, not their 5-digit fixed-line
-ranges, so the extraction self-check correctly refuses to ship them
-rather than mis-format them).
-Each is extracted from Google's
-`libphonenumber` via
-[`scripts/extract-metadata.ts`](scripts/extract-metadata.ts), with source
-commit/version tracked per-file in [`data/sources.json`](data/sources.json).
-A daily GitHub Actions workflow ([`metadata-check.yml`](.github/workflows/metadata-check.yml))
-checks for upstream changes and opens a PR with refreshed data when it finds
-one - see [`data/last-checked-commit.txt`](data/last-checked-commit.txt) for
-the watermark it compares against.
+Inject metadata to get real per-country validation (calling code + national
+number format) instead of the E.164-shape-only check `parse()` does without
+it. Metadata is keyed by ISO region (not calling code - a calling code like
+NANP's `1` can map to several regions, e.g. US and Canada) and matches the
+`Metadata` shape exported from `dialsense/metadata`.
 
 Data is published with the package, so you only need to import the
 countries you actually use - each is its own file, so bundlers only include
-what you import:
+what you import.
+
+#### A single country
 
 ```ts
 import { parse } from 'dialsense';
@@ -77,9 +85,10 @@ setup({ metadata: us });
 parse('+12025550123'); // now validated against the US calling code + pattern
 ```
 
-To load several countries at once, merge their metadata objects before
-calling `setup()` - each file is keyed by region, so spreading multiple
-together just unions the keys:
+#### Multiple countries
+
+Merge their metadata objects before calling `setup()` - each file is keyed
+by region, so spreading multiple together just unions the keys:
 
 ```ts
 import { setup } from 'dialsense/metadata';
@@ -88,6 +97,8 @@ import gb from 'dialsense/metadata/gb.json' with { type: 'json' };
 
 setup({ metadata: { ...us, ...gb } });
 ```
+
+#### A whole region
 
 For a whole region - e.g. "all of the EU" - `dialsense/regions` exports
 curated ISO-code lists (`REGION_GROUPS.EU`, `.NANP`, `.APAC`,
@@ -114,8 +125,10 @@ const modules = await Promise.all(
 setup({ metadata: Object.assign({}, ...modules.map((m) => m.default)) });
 ```
 
+#### Hand-written metadata
+
 You can also hand-write metadata matching the same shape instead of using
-the shipped data:
+the shipped data. The minimal shape only needs four fields:
 
 ```ts
 setup({
@@ -129,6 +142,50 @@ setup({
   },
 });
 ```
+
+`CountryMetadata` (exported from `dialsense/metadata`) supports more than
+that minimal shape, though - the extra fields are what power
+[number type detection](#number-type-detection),
+[display formatting](#display-formatting), and
+[live formatting](#live-formatting-as-digits-are-typed) below. Without
+them, those features simply degrade gracefully (`type: 'UNKNOWN'`,
+unformatted digits) rather than erroring, but you'll want them if you're
+hand-writing metadata for a country that isn't in `data/`:
+
+| Field | Required? | Purpose |
+|---|---|---|
+| `region` | required | ISO 3166-1 alpha-2 code, e.g. `'US'` |
+| `callingCode` | required | E.164 calling code as a string, e.g. `'1'` |
+| `nationalNumberPattern` | required | Fallback full-match regex used when no `types` entry matches |
+| `possibleLengths` | required | Valid national-number lengths, e.g. `[10]` |
+| `types` | optional | Per-type patterns (see [Number type detection](#number-type-detection)) - each of `MOBILE`/`FIXED`/`TOLL_FREE`/`PREMIUM_RATE`/`SHARED_COST`/`PERSONAL_NUMBER`/`VOIP`/`PAGER`/`UAN`/`VOICEMAIL` is itself `{ nationalNumberPattern, possibleLengths }` |
+| `nationalPrefix` | optional | National dialing prefix, e.g. `'0'` for GB - only ever shown in `NATIONAL` format, never `INTERNATIONAL` |
+| `formats` | optional | Ordered list of format rules (see [Display formatting](#display-formatting)) - each is `{ pattern, format, nationalPrefixFormattingRule?, intlFormat?, leadingDigits? }` |
+
+For a fully worked real example of every field, see any file in
+[`data/`](data) - e.g. [`data/gb.json`](data/gb.json) exercises all of them,
+including multiple `types` and `leadingDigits`-disambiguated `formats`.
+
+#### Where the data comes from
+
+Country data lives in [`data/`](data) - all 25 NANP territories (US, Canada,
+and the Caribbean/Pacific territories sharing calling code `1`), all 27 EU
+member states, Russia + Kazakhstan and Italy + Vatican City (two further
+real cases of one calling code covering multiple regions, alongside
+NANP's), and essentially the full rest of the world's countries and
+territories, 209 in total (Vanuatu and Solomon Islands are the two
+exceptions for now - their upstream metadata only defines a format rule
+for their newer 7-digit mobile ranges, not their 5-digit fixed-line
+ranges, so the extraction self-check correctly refuses to ship them
+rather than mis-format them).
+
+Each is extracted from Google's `libphonenumber` via
+[`scripts/extract-metadata.ts`](scripts/extract-metadata.ts), with source
+commit/version tracked per-file in [`data/sources.json`](data/sources.json).
+A daily GitHub Actions workflow ([`metadata-check.yml`](.github/workflows/metadata-check.yml))
+checks for upstream changes and opens a PR with refreshed data when it finds
+one - see [`data/last-checked-commit.txt`](data/last-checked-commit.txt) for
+the watermark it compares against.
 
 ### Inspecting what's currently injected
 
@@ -257,7 +314,13 @@ is simply `null` - `asyncParse()` itself never throws.
 - `dialsense/asYouType` - `asYouType()` for live formatting as digits are typed
 - `dialsense/regions` - `REGION_GROUPS`/`ALL_REGIONS` curated ISO-code lists for bulk-loading a whole region
 
-## Development Notes
+## Development
 
-- Source code is in `src/`.
-- Build artifacts are generated in `dist/`.
+Source code is in `src/`; build artifacts are generated into `dist/` (not
+committed).
+
+- `npm run typecheck`: run TypeScript type checks.
+- `npm run build`: build ESM + CJS bundles and declaration files into `dist/`.
+- `npm test`: runs typecheck, then the unit tests in `tests/`.
+- `npm run metadata:extract -- <ISO_REGION...>`: (re)extract one or more countries' validation data from upstream `libphonenumber` into `data/`, e.g. `npm run metadata:extract -- US CA`.
+- `npm run metadata:check`: check whether upstream `libphonenumber` metadata has changed since `data/last-checked-commit.txt`.

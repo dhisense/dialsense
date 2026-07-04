@@ -47,7 +47,8 @@
   "files": [
     "dist",
     "data",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "sideEffects": false,
   "directories": {
@@ -63,7 +64,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinpro9/dialsense.git"
+  },
   "type": "module",
   "engines": {
     "node": ">=20.0.0"
