@@ -1,0 +1,33 @@
+{
+  "GI": {
+    "region": "GI",
+    "callingCode": "350",
+    "nationalNumberPattern": "^(?:2190[0-2]\\d{3}|2(?:0(?:[02]\\d|3[01])|16[24-9]|2[2-5]\\d)\\d{4})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:5251[0-4]\\d{3}|(?:5(?:[146-8]\\d\\d|250)|60(?:1[01]|6\\d))\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2190[0-2]\\d{3}|2(?:0(?:[02]\\d|3[01])|16[24-9]|2[2-5]\\d)\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{5})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "2"
+        ]
+      }
+    ]
+  }
+}

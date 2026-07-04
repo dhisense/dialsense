@@ -1,0 +1,43 @@
+{
+  "AF": {
+    "region": "AF",
+    "callingCode": "93",
+    "nationalNumberPattern": "^(?:(?:[25][0-8]|[34][0-4]|6[0-5])[2-9]\\d{6})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:7\\d{8})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:[25][0-8]|[34][0-4]|6[0-5])[2-9]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[1-9]"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[2-7]"
+        ]
+      }
+    ]
+  }
+}

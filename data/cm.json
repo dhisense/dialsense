@@ -1,0 +1,47 @@
+{
+  "CM": {
+    "region": "CM",
+    "callingCode": "237",
+    "nationalNumberPattern": "^(?:2(?:22|33)\\d{6})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:24[23]|6(?:[25-9]\\d|4[0-2]))\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2(?:22|33)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:88\\d{6,7})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "88"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4 $5",
+        "leadingDigits": [
+          "[26]|88"
+        ]
+      }
+    ]
+  }
+}

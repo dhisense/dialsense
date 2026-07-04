@@ -1,0 +1,58 @@
+{
+  "CR": {
+    "region": "CR",
+    "callingCode": "506",
+    "nationalNumberPattern": "^(?:210[7-9]\\d{4}|2(?:[024-7]\\d|1[1-9])\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:3005\\d|6500[01])\\d{3}|(?:5[07]|6[0-4]|7[0-3]|8[3-9])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:210[7-9]\\d{4}|2(?:[024-7]\\d|1[1-9])\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90[059]\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:(?:210[0-6]|4\\d{3}|5100)\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{4})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[2-7]|8[3-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "$1-$2-$3",
+        "leadingDigits": [
+          "[89]"
+        ]
+      }
+    ]
+  }
+}

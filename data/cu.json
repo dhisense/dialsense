@@ -1,0 +1,77 @@
+{
+  "CU": {
+    "region": "CU",
+    "callingCode": "53",
+    "nationalNumberPattern": "^(?:(?:3[23]|4[89])\\d{4,6}|(?:31|4[36]|8(?:0[25]|78)\\d)\\d{6}|(?:2[1-4]|4[1257]|7\\d)\\d{5,6})$",
+    "possibleLengths": [
+      6,
+      7,
+      8,
+      10
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:5\\d|6[2-4])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:3[23]|4[89])\\d{4,6}|(?:31|4[36]|8(?:0[25]|78)\\d)\\d{6}|(?:2[1-4]|4[1257]|7\\d)\\d{5,6})$",
+        "possibleLengths": [
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:807\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{4,6})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "2[1-4]|[34]"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{6,7})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "($NP$FG)",
+        "leadingDigits": [
+          "7"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{7})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[56]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{7})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "8"
+        ]
+      }
+    ]
+  }
+}

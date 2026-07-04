@@ -1,0 +1,60 @@
+{
+  "AD": {
+    "region": "AD",
+    "callingCode": "376",
+    "nationalNumberPattern": "^(?:[78]\\d{5})$",
+    "possibleLengths": [
+      6
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:690\\d{6}|[356]\\d{5})$",
+        "possibleLengths": [
+          6,
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:[78]\\d{5})$",
+        "possibleLengths": [
+          6
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:180[02]\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:[19]\\d{5})$",
+        "possibleLengths": [
+          6
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[135-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "1"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "6"
+        ]
+      }
+    ]
+  }
+}

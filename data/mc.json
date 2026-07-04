@@ -1,0 +1,65 @@
+{
+  "MC": {
+    "region": "MC",
+    "callingCode": "377",
+    "nationalNumberPattern": "^(?:(?:870|9[2-47-9]\\d)\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:4(?:[46]\\d|5[1-9])\\d{5}|(?:3|[67]\\d)\\d{7})$",
+        "possibleLengths": [
+          8,
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:870|9[2-47-9]\\d)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:(?:800|90\\d)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{2})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "87"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "4"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[389]"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4 $5",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[67]"
+        ]
+      }
+    ]
+  }
+}

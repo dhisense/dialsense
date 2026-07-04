@@ -1,0 +1,33 @@
+{
+  "AO": {
+    "region": "AO",
+    "callingCode": "244",
+    "nationalNumberPattern": "^(?:2\\d(?:[0134][25-9]|[25-9]\\d)\\d{5})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:9[1-79]\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2\\d(?:[0134][25-9]|[25-9]\\d)\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[29]"
+        ]
+      }
+    ]
+  }
+}

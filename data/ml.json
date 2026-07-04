@@ -1,0 +1,48 @@
+{
+  "ML": {
+    "region": "ML",
+    "callingCode": "223",
+    "nationalNumberPattern": "^(?:2(?:07[0-8]|12[67])\\d{4}|(?:2(?:02|1[4-689])|4(?:0[0-4]|4[1-59]))\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:2(?:0(?:01|79)|17\\d)\\d{4}|(?:5[0-3]|[679]\\d|8[2-59])\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2(?:07[0-8]|12[67])\\d{4}|(?:2(?:02|1[4-689])|4(?:0[0-4]|4[1-59]))\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:80\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{4})",
+        "format": "$1",
+        "leadingDigits": [
+          "67[057-9]|74[045]",
+          "67(?:0[09]|[59]9|77|8[89])|74(?:0[02]|44|55)"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[24-9]"
+        ]
+      }
+    ]
+  }
+}

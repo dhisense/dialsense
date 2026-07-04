@@ -48,7 +48,7 @@ Country data lives in [`data/`](data) - all 25 NANP territories (US, Canada,
 and the Caribbean/Pacific territories sharing calling code `1`), all 27 EU
 member states, Russia + Kazakhstan (a second real case of one calling code
 covering multiple regions, alongside NANP's), and a growing set of other
-major markets, 120 countries so far. Each is extracted from Google's
+major markets, 161 countries so far. Each is extracted from Google's
 `libphonenumber` via
 [`scripts/extract-metadata.ts`](scripts/extract-metadata.ts), with source
 commit/version tracked per-file in [`data/sources.json`](data/sources.json).

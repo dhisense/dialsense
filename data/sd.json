@@ -1,0 +1,35 @@
+{
+  "SD": {
+    "region": "SD",
+    "callingCode": "249",
+    "nationalNumberPattern": "^(?:1(?:5\\d|8[35-7])\\d{6})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:1[0-2]|9[0-3569])\\d{7})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:1(?:5\\d|8[35-7])\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[19]"
+        ]
+      }
+    ]
+  }
+}

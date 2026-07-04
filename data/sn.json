@@ -1,0 +1,64 @@
+{
+  "SN": {
+    "region": "SN",
+    "callingCode": "221",
+    "nationalNumberPattern": "^(?:3(?:0(?:1[0-2]|80)|282|3(?:8[1-9]|9[3-9])|611)\\d{5})$",
+    "possibleLengths": [
+      9
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:7(?:[015-8]\\d|21|90)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:3(?:0(?:1[0-2]|80)|282|3(?:8[1-9]|9[3-9])|611)\\d{5})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:88[4689]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "SHARED_COST": {
+        "nationalNumberPattern": "^(?:81[02468]\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:(?:3(?:392|9[01]\\d)\\d|93(?:3[13]0|929))\\d{4})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "8"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[379]"
+        ]
+      }
+    ]
+  }
+}

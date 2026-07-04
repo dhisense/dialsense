@@ -1,0 +1,61 @@
+{
+  "SV": {
+    "region": "SV",
+    "callingCode": "503",
+    "nationalNumberPattern": "^(?:2(?:79(?:0[0347-9]|[1-9]\\d)|89(?:0[024589]|[1-9]\\d))\\d{3}|2(?:[1-69]\\d|[78][0-8])\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:[5-7]\\d{7})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2(?:79(?:0[0347-9]|[1-9]\\d)|89(?:0[024589]|[1-9]\\d))\\d{3}|2(?:[1-69]\\d|[78][0-8])\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{8}|80[01]\\d{4})$",
+        "possibleLengths": [
+          7,
+          11
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:900\\d{4}(?:\\d{4})?)$",
+        "possibleLengths": [
+          7,
+          11
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[89]"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[25-7]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{4})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[89]"
+        ]
+      }
+    ]
+  }
+}

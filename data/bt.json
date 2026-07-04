@@ -1,0 +1,48 @@
+{
+  "BT": {
+    "region": "BT",
+    "callingCode": "975",
+    "nationalNumberPattern": "^(?:(?:2[3-6]|[34][5-7]|5[236]|6[2-46]|7[246]|8[2-4])\\d{5})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:1[67]|[78]7)\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2[3-6]|[34][5-7]|5[236]|6[2-46]|7[246]|8[2-4])\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{3})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[2-7]"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[2-6]|7[246]|8[2-4]"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "1[67]|[78]"
+        ]
+      }
+    ]
+  }
+}

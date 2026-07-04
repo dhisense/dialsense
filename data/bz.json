@@ -1,0 +1,46 @@
+{
+  "BZ": {
+    "region": "BZ",
+    "callingCode": "501",
+    "nationalNumberPattern": "^(?:(?:2(?:[02]\\d|36|[68]0)|[3-58](?:[02]\\d|[68]0)|7(?:[02]\\d|32|[68]0))\\d{4})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:6[0-35-7]\\d{5})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:2(?:[02]\\d|36|[68]0)|[3-58](?:[02]\\d|[68]0)|7(?:[02]\\d|32|[68]0))\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:0800\\d{7})$",
+        "possibleLengths": [
+          11
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1-$2",
+        "leadingDigits": [
+          "[2-8]"
+        ]
+      },
+      {
+        "pattern": "(\\d)(\\d{3})(\\d{4})(\\d{3})",
+        "format": "$1-$2-$3-$4",
+        "leadingDigits": [
+          "0"
+        ]
+      }
+    ]
+  }
+}

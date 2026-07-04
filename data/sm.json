@@ -1,0 +1,60 @@
+{
+  "SM": {
+    "region": "SM",
+    "callingCode": "378",
+    "nationalNumberPattern": "^(?:0549(?:8[0157-9]|9\\d)\\d{4})$",
+    "possibleLengths": [
+      10
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:6[16]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:0549(?:8[0157-9]|9\\d)\\d{4})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:7[178]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "VOIP": {
+        "nationalNumberPattern": "^(?:5[158]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{6})",
+        "format": "$1",
+        "leadingDigits": [
+          "[89]"
+        ],
+        "intlFormat": "NA"
+      },
+      {
+        "pattern": "(\\d{2})(\\d{2})(\\d{2})(\\d{2})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "[5-7]"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{6})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "0"
+        ]
+      }
+    ]
+  }
+}

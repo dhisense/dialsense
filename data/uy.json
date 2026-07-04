@@ -1,0 +1,104 @@
+{
+  "UY": {
+    "region": "UY",
+    "callingCode": "598",
+    "nationalNumberPattern": "^(?:(?:1(?:770|9(?:20|[89]7))|(?:2\\d|4[2-7])\\d\\d)\\d{4})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:9[1-9]\\d{6})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:1(?:770|9(?:20|[89]7))|(?:2\\d|4[2-7])\\d\\d)\\d{4})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:0004\\d{2,9}|(?:405|80[05])\\d{4})$",
+        "possibleLengths": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:90[0-8]\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:21\\d{2,3})$",
+        "possibleLengths": [
+          4,
+          5
+        ]
+      }
+    },
+    "nationalPrefix": "0",
+    "formats": [
+      {
+        "pattern": "(\\d{4,5})",
+        "format": "$1",
+        "leadingDigits": [
+          "21"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3,4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "0"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1 $2",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "[49]0|8"
+        ]
+      },
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "nationalPrefixFormattingRule": "$NP$FG",
+        "leadingDigits": [
+          "9"
+        ]
+      },
+      {
+        "pattern": "(\\d{4})(\\d{4})",
+        "format": "$1 $2",
+        "leadingDigits": [
+          "[124]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{2,4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "0"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})(\\d{2,4})",
+        "format": "$1 $2 $3 $4",
+        "leadingDigits": [
+          "0"
+        ]
+      }
+    ]
+  }
+}

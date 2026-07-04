@@ -1,0 +1,58 @@
+{
+  "MV": {
+    "region": "MV",
+    "callingCode": "960",
+    "nationalNumberPattern": "^(?:(?:3(?:0[0-4]|3[0-59])|6(?:[58][024689]|6[024-68]|7[02468]))\\d{4})$",
+    "possibleLengths": [
+      7
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:(?:46[46]|[79]\\d\\d)\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:(?:3(?:0[0-4]|3[0-59])|6(?:[58][024689]|6[024-68]|7[02468]))\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "PREMIUM_RATE": {
+        "nationalNumberPattern": "^(?:900\\d{7})$",
+        "possibleLengths": [
+          10
+        ]
+      },
+      "UAN": {
+        "nationalNumberPattern": "^(?:4(?:0[01]|50)\\d{4})$",
+        "possibleLengths": [
+          7
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{3})(\\d{4})",
+        "format": "$1-$2",
+        "leadingDigits": [
+          "[34679]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "[89]"
+        ]
+      }
+    ]
+  }
+}

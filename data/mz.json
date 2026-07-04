@@ -1,0 +1,46 @@
+{
+  "MZ": {
+    "region": "MZ",
+    "callingCode": "258",
+    "nationalNumberPattern": "^(?:2(?:[1346]\\d|5[0-2]|[78][12]|93)\\d{5})$",
+    "possibleLengths": [
+      8
+    ],
+    "types": {
+      "MOBILE": {
+        "nationalNumberPattern": "^(?:8(?:[2-79]\\d|80)\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      },
+      "FIXED": {
+        "nationalNumberPattern": "^(?:2(?:[1346]\\d|5[0-2]|[78][12]|93)\\d{5})$",
+        "possibleLengths": [
+          8
+        ]
+      },
+      "TOLL_FREE": {
+        "nationalNumberPattern": "^(?:800\\d{6})$",
+        "possibleLengths": [
+          9
+        ]
+      }
+    },
+    "formats": [
+      {
+        "pattern": "(\\d{2})(\\d{3})(\\d{3,4})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "2|8[2-9]"
+        ]
+      },
+      {
+        "pattern": "(\\d{3})(\\d{3})(\\d{3})",
+        "format": "$1 $2 $3",
+        "leadingDigits": [
+          "8"
+        ]
+      }
+    ]
+  }
+}
