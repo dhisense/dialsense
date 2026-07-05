@@ -50,8 +50,6 @@ re-litigate those checks here, just don't break them.
 ## Repo etiquette
 - `main` is protected - branch off `main` and open a PR; never commit to
   `main` directly.
-- Public text (commits, PRs, docs, code comments) must not contain
-  paid-tier/business-strategy/competitor-comparison language.
 - After a correction to how you should work in this repo, propose an
   update to this file rather than only remembering it for one session.
 

@@ -33,3 +33,4 @@ Thumbs.db
 *.pem
 *-key.json
 credentials*.json
+CLAUDE.local.md
