@@ -69,7 +69,7 @@ jobs:
         if: steps.monitor.outputs.changed == 'true'
         id: open_pr
         continue-on-error: true
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.PR_PAT_TOKEN }}  # <-- Matches your new secret name!
           commit-message: 'Update phone metadata from upstream libphonenumber'
