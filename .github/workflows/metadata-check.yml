@@ -89,4 +89,4 @@ jobs:
         if: steps.monitor.outputs.changed == 'true' && steps.open_pr.outcome == 'failure'
         run: |
           echo "::warning::Could not auto-open a pull request (likely because GitHub Actions is not allowed to create PRs in this repository settings)."
-          echo "::warning::A branch with the metadata update was still pushed: https://github.com/${{ github.repository }}/compare/main...metadata-upstream-update?expand=1"
+          echo "::warning::A branch with the metadata update was still pushed: https://github.com/${{ github.repository }}/compare/${{ github.event.repository.default_branch }}...metadata-upstream-update?expand=1"
