@@ -235,6 +235,8 @@ checks for upstream changes and opens a PR with refreshed data when it finds
 one - see [`data/last-checked-commit.txt`](data/last-checked-commit.txt) for
 the watermark it compares against.
 
+First metadata update on 07/16/266.
+
 ### Inspecting what's currently injected
 
 `getCountries()`, `getCountryCallingCode()`, and `isSupportedCountry()` all
