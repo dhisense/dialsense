@@ -64,6 +64,8 @@ jobs:
 
       - name: Open pull request
         if: steps.monitor.outputs.changed == 'true'
+        id: open_pr
+        continue-on-error: true
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: 'Update phone metadata from upstream libphonenumber'
@@ -82,3 +84,9 @@ jobs:
             before merging.
           branch: metadata-upstream-update
           delete-branch: true
+
+      - name: PR creation fallback (permission-restricted repos)
+        if: steps.monitor.outputs.changed == 'true' && steps.open_pr.outcome == 'failure'
+        run: |
+          echo "::warning::Could not auto-open a pull request (likely because GitHub Actions is not allowed to create PRs in this repository settings)."
+          echo "::warning::A branch with the metadata update was still pushed: https://github.com/${{ github.repository }}/compare/main...metadata-upstream-update?expand=1"
