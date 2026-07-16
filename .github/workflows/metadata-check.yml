@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
+      BASE_BRANCH: main
       UPDATE_BRANCH: metadata-upstream-update
     steps:
       - name: Checkout
@@ -85,10 +86,11 @@ jobs:
             automatically - push an empty commit or re-run `npm test` locally to get a CI signal
             before merging.
           branch: ${{ env.UPDATE_BRANCH }}
+          base: ${{ env.BASE_BRANCH }}
           delete-branch: true
 
       - name: PR creation fallback (permission-restricted repos)
         if: steps.monitor.outputs.changed == 'true' && steps.open_pr.outcome == 'failure'
         run: |
           echo "::warning::Could not auto-open a pull request (likely because GitHub Actions is not allowed to create PRs in this repository's settings)."
-          echo "::warning::If branch push succeeded, compare it manually at: https://github.com/${{ github.repository }}/compare/${{ github.event.repository.default_branch }}...${{ env.UPDATE_BRANCH }}?expand=1"
+          echo "::warning::If branch push succeeded, compare it manually at: https://github.com/${{ github.repository }}/compare/${{ env.BASE_BRANCH }}...${{ env.UPDATE_BRANCH }}?expand=1"
