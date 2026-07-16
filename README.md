@@ -8,6 +8,25 @@ A modular, type-safe, and tree-shakable TypeScript library for phone number vali
 - Type-Safe: No more try/catch—handle ParseResult objects explicitly.
 - Reachability-Ready: Designed to plug into real-time operational lookup services (HLR/CNAM) via your own provider.
 
+## Contents
+
+- [Bundle size](#bundle-size)
+- [Install](#install)
+- [Usage](#usage)
+- [Adding country validation](#adding-country-validation)
+  - [A single country](#a-single-country)
+  - [Multiple countries](#multiple-countries)
+  - [A whole region](#a-whole-region)
+  - [Hand-written metadata](#hand-written-metadata)
+  - [Where the data comes from](#where-the-data-comes-from)
+- [Inspecting what's currently injected](#inspecting-whats-currently-injected)
+- [Number type detection](#number-type-detection)
+- [Display formatting](#display-formatting)
+- [Live formatting as digits are typed](#live-formatting-as-digits-are-typed)
+- [Real-time reachability, carrier, and fraud/risk lookups](#real-time-reachability-carrier-and-fraudrisk-lookups)
+- [Package Exports](#package-exports)
+- [Development](#development)
+
 ## Bundle size
 
 Real measurements, not estimates - minified via `esbuild` and gzipped
@@ -54,25 +73,6 @@ country DialSense supports.
 | `EU` | 27 | 48.6 KB | 6.8 KB |
 | `APAC` | 29 | 66.4 KB | 10.2 KB |
 | `ALL_REGIONS` (everything, 209 countries) | 209 | 279.3 KB | 36.8 KB |
-
-## Contents
-
-- [Bundle size](#bundle-size)
-- [Install](#install)
-- [Usage](#usage)
-- [Adding country validation](#adding-country-validation)
-  - [A single country](#a-single-country)
-  - [Multiple countries](#multiple-countries)
-  - [A whole region](#a-whole-region)
-  - [Hand-written metadata](#hand-written-metadata)
-  - [Where the data comes from](#where-the-data-comes-from)
-- [Inspecting what's currently injected](#inspecting-whats-currently-injected)
-- [Number type detection](#number-type-detection)
-- [Display formatting](#display-formatting)
-- [Live formatting as digits are typed](#live-formatting-as-digits-are-typed)
-- [Real-time reachability, carrier, and fraud/risk lookups](#real-time-reachability-carrier-and-fraudrisk-lookups)
-- [Package Exports](#package-exports)
-- [Development](#development)
 
 ## Install
 
@@ -234,6 +234,8 @@ A daily GitHub Actions workflow ([`metadata-check.yml`](.github/workflows/metada
 checks for upstream changes and opens a PR with refreshed data when it finds
 one - see [`data/last-checked-commit.txt`](data/last-checked-commit.txt) for
 the watermark it compares against.
+
+First metadata update on 07/16/266.
 
 ### Inspecting what's currently injected
 

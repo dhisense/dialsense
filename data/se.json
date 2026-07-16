@@ -10,7 +10,7 @@
     ],
     "types": {
       "MOBILE": {
-        "nationalNumberPattern": "^(?:7[02369]\\d{7})$",
+        "nationalNumberPattern": "^(?:7[023689]\\d{7})$",
         "possibleLengths": [
           9
         ]
