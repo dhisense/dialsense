@@ -71,6 +71,7 @@ jobs:
         continue-on-error: true
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.PR_PAT_TOKEN }}  # <-- Matches your new secret name!
           commit-message: 'Update phone metadata from upstream libphonenumber'
           title: 'Update phone metadata (upstream commit ${{ steps.monitor.outputs.latest_commit }})'
           body: |
