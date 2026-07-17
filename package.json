@@ -1,5 +1,5 @@
 {
-  "name": "dialsense",
+  "name": "@dhisense/dialsense",
   "version": "1.0.0",
   "description": "Phone number parsing and validation utilities",
   "main": "./dist/core.cjs",
