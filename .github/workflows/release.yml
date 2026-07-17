@@ -55,6 +55,18 @@ jobs:
             exit 1
           fi
 
+      # Fail fast with a clear message rather than letting npm produce a
+      # cryptic ENEEDAUTH error.  The secret must be set to a valid npm
+      # automation token (Settings -> Secrets -> Actions -> NPM_TOKEN).
+      - name: Verify NPM_TOKEN secret is configured
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::NPM_TOKEN secret is not set. Add a valid npm automation token via Settings -> Secrets -> Actions -> New repository secret (name: NPM_TOKEN)."
+            exit 1
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       # `--access public` is a no-op for an unscoped package name like
       # "dialsense" (unscoped packages default to public) but is kept
       # explicit for clarity and in case this ever moves under a scope.
