@@ -41,10 +41,23 @@ interface CommitInfo {
   date: string;
 }
 
+// Returns Authorization headers if GITHUB_TOKEN is set in the environment,
+// allowing authenticated GitHub API requests (5000 req/hr vs 60 req/hr
+// unauthenticated). Required in CI where runners share IPs and easily
+// exhaust the unauthenticated rate limit.
+const githubAuthHeaders = (): HeadersInit => {
+  const token = process.env['GITHUB_TOKEN'];
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
 // Shared with scripts/monitor-upstream.ts, which only needs this cheap
 // call (no XML fetch) to check whether upstream has moved.
 export const fetchLatestCommit = async (): Promise<CommitInfo> => {
-  const commits = (await fetch(COMMITS_API_URL).then((r) => r.json())) as Array<{
+  const response = await fetch(COMMITS_API_URL, { headers: githubAuthHeaders() });
+  if (!response.ok) {
+    throw new Error(`GitHub API request failed: HTTP ${response.status} ${response.statusText}`);
+  }
+  const commits = (await response.json()) as Array<{
     sha: string;
     commit: { committer: { date: string } };
   }>;
@@ -226,7 +239,10 @@ const main = async () => {
       return r.text();
     }),
     fetchLatestCommit(),
-    fetch(TAGS_API_URL).then((r) => r.json()) as Promise<Array<{ name: string }>>,
+    fetch(TAGS_API_URL, { headers: githubAuthHeaders() }).then((r) => {
+      if (!r.ok) throw new Error(`GitHub tags API request failed: HTTP ${r.status} ${r.statusText}`);
+      return r.json();
+    }) as Promise<Array<{ name: string }>>,
   ]);
 
   const nearestReleaseTag = tags[0]?.name;
