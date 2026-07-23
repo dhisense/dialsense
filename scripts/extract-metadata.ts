@@ -47,7 +47,7 @@ interface CommitInfo {
 // exhaust the unauthenticated rate limit.
 const githubAuthHeaders = (): HeadersInit => {
   const token = process.env['GITHUB_TOKEN'];
-  return token ? { Authorization: `Bearer ${token}` } : {};
+  return token ? { Authorization: `token ${token}` } : {};
 };
 
 // Shared with scripts/monitor-upstream.ts, which only needs this cheap
