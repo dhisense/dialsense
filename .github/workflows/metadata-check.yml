@@ -43,6 +43,8 @@ jobs:
       - name: Check for upstream changes
         id: monitor
         run: npm run metadata:check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Re-extract every currently-tracked country (derived from data/*.json
       # filenames, not a hardcoded list, so this automatically covers
@@ -54,6 +56,8 @@ jobs:
         run: |
           REGIONS=$(ls data/*.json | grep -v sources.json | xargs -n1 basename -s .json | tr '[:lower:]' '[:upper:]' | tr '\n' ' ')
           npm run metadata:extract -- $REGIONS
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Advance last-checked commit
         if: steps.monitor.outputs.changed == 'true'
