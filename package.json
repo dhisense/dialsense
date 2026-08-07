@@ -1,6 +1,6 @@
 {
   "name": "@dhisense/dialsense",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Phone number parsing and validation utilities",
   "main": "./dist/core.cjs",
   "module": "./dist/core.js",
@@ -62,7 +62,11 @@
     "metadata:extract": "tsx scripts/extract-metadata.ts",
     "metadata:check": "tsx scripts/monitor-upstream.ts"
   },
-  "keywords": ["google", "libphonenumber", "libphonenumber-js"],
+  "keywords": [
+    "google",
+    "libphonenumber",
+    "libphonenumber-js"
+  ],
   "author": "vinpro9",
   "license": "Apache-2.0",
   "repository": {
