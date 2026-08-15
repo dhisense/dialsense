@@ -2,20 +2,20 @@
   "SY": {
     "region": "SY",
     "callingCode": "963",
-    "nationalNumberPattern": "^(?:21\\d{6,7}|(?:1(?:[14]\\d|[2356])|2[235]|3(?:[13]\\d|4)|4[134]|5[1-3])\\d{6})$",
+    "nationalNumberPattern": "^(?:(?:1(?:[1478]\\d|[2356])|21\\d|3(?:[13]\\d|4)|4[134]|5[1-3])\\d{6}|2[1-5]\\d{6})$",
     "possibleLengths": [
       8,
       9
     ],
     "types": {
       "MOBILE": {
-        "nationalNumberPattern": "^(?:(?:50|9[1-9])\\d{7})$",
+        "nationalNumberPattern": "^(?:(?:50|9[03-689])\\d{7})$",
         "possibleLengths": [
           9
         ]
       },
       "FIXED": {
-        "nationalNumberPattern": "^(?:21\\d{6,7}|(?:1(?:[14]\\d|[2356])|2[235]|3(?:[13]\\d|4)|4[134]|5[1-3])\\d{6})$",
+        "nationalNumberPattern": "^(?:(?:1(?:[1478]\\d|[2356])|21\\d|3(?:[13]\\d|4)|4[134]|5[1-3])\\d{6}|2[1-5]\\d{6})$",
         "possibleLengths": [
           8,
           9

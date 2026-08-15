@@ -8,7 +8,7 @@
     ],
     "types": {
       "MOBILE": {
-        "nationalNumberPattern": "^(?:(?:51[01]|6\\d\\d|7(?:[0-5]\\d|6[0-79]|[78]0))\\d{4})$",
+        "nationalNumberPattern": "^(?:(?:51[01]|6\\d\\d|7(?:[0-5]\\d|6[0-79]|70|8[067]))\\d{4})$",
         "possibleLengths": [
           7
         ]

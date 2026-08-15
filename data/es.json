@@ -55,7 +55,8 @@
         "pattern": "(\\d{4})",
         "format": "$1",
         "leadingDigits": [
-          "905"
+          "905",
+          "905[124578]"
         ],
         "intlFormat": "NA"
       },
