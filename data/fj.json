@@ -2,7 +2,7 @@
   "FJ": {
     "region": "FJ",
     "callingCode": "679",
-    "nationalNumberPattern": "^(?:603\\d{4}|(?:3[0-5]|6[25-7]|8[58])\\d{5})$",
+    "nationalNumberPattern": "^(?:603\\d{4}|(?:3[0-6]|6[25-7]|8[58])\\d{5})$",
     "possibleLengths": [
       7
     ],
@@ -14,7 +14,7 @@
         ]
       },
       "FIXED": {
-        "nationalNumberPattern": "^(?:603\\d{4}|(?:3[0-5]|6[25-7]|8[58])\\d{5})$",
+        "nationalNumberPattern": "^(?:603\\d{4}|(?:3[0-6]|6[25-7]|8[58])\\d{5})$",
         "possibleLengths": [
           7
         ]
